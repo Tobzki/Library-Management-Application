@@ -3,7 +3,8 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        System.out.println("Hello Rasmus and Håkan, don't forget Tobbe!");
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Jag och mina böjs");
+        }
     }
 }
