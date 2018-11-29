@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Transaction {
 
-    public static int idCounter;
+    public static int idCounter = 0;
 
     private int transactionId;
     private int bookId;

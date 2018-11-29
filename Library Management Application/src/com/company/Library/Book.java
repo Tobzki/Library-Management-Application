@@ -18,4 +18,38 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public String getTitle () {
+        return title;
+    }
+
+    public String getIsbn () {
+        return isbn;
+    }
+
+    public String[] getAuthors () {
+        return authors;
+    }
+
+    public String getPublisher () {
+        return publisher;
+    }
+
+    @Override
+    public String toString () {
+        StringBuilder authorsString = new StringBuilder();
+        String result;
+        result = "***************************\n";
+        result += title + "\n";
+        for (int i = 0; i < authors.length; i++) {
+            if (i == authors.length - 1) {
+                authorsString.append(authors[i]);
+            } else {
+                authorsString.append(authors[i] + ", ");
+            }
+        }
+        result += authorsString.toString() + "\n";
+        result += isbn + "\n";
+        result += "***************************\n";
+        return result;
+    }
 }
