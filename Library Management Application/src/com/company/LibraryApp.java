@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class LibraryApp {
 
     public static void main(String[] args) {
-        String ssn = safeStringInput("SSN");
+        
     }
 
     public static int safeIntInput (String prompt) {
