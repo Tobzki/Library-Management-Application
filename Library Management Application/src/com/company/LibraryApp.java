@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class LibraryApp {
 
     public static void main(String[] args) {
-        int answer = safeIntInput("Command", 5);
+        String ssn = safeStringInput("SSN");
     }
 
     public static int safeIntInput (String prompt) {
@@ -53,6 +53,23 @@ public class LibraryApp {
                 result = -1;
             }
         } while(result == -1);
+
+        return result;
+    }
+
+    public static String safeStringInput (String prompt) {
+        Scanner input = new Scanner(System.in);
+        System.out.print(prompt + " >> ");
+        String result = "";
+        boolean firstIteration = true;
+        do {
+            if (result.equals(" ") || (result.equals("") && !firstIteration)) {
+                System.out.println("Enter a valid input.");
+                System.out.print(prompt + " >> ");
+            }
+            result = input.nextLine();
+            firstIteration = false;
+        } while (result.equals("") || result.equals(" "));
 
         return result;
     }
