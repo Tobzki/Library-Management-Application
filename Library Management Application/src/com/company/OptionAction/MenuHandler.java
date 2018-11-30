@@ -1,11 +1,13 @@
 package com.company.OptionAction;
+import com.company.Users.Member;
+import com.company.Users.UserLogic;
 import com.company.Util;
 import java.util.Scanner;
 
 public class MenuHandler {
 
     private Scanner input = new Scanner(System.in);
-
+    private  UserLogic userLogic = new UserLogic();
     private Menu activeMenu; // starting point
     private Menu lastMenu; // records what menu was previously visited
 
@@ -51,6 +53,8 @@ public class MenuHandler {
                 if (answer == 1) {
 
                     System.out.println("You are now registered in our system " + name + ". Thanks for your contribution!");
+                    Member member = new Member(ssn, name, address, telePhoneNumber, userName, password);
+                    userLogic.addMember(member);
                 } else if (answer == 2){
                     System.out.println("\n\nPlease be more accurate with your information.\n\n");
                 }
