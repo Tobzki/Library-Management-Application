@@ -16,4 +16,26 @@ public abstract class Account {
         this.username = username;
         this.password = password;
     }
+
+    public String getSsn () {
+        return ssn;
+    }
+
+    public void setName (String name) {
+        if (!name.equals("")) {
+            this.name = name;
+        }
+    }
+
+    public void setAddress (String address) {
+        if (!address.equals("")) {
+            this.address = address;
+        }
+    }
+
+    public void setTelephone (String telephone) {
+        if (!telephone.equals("")) {
+            this.telephone = telephone;
+        }
+    }
 }
