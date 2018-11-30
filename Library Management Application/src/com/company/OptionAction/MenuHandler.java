@@ -61,7 +61,7 @@ public class MenuHandler {
                 } else if (answer == 2){
                     System.out.println("\n\nPlease be more accurate with your information.\n\n");
                 }
-            } while (answer == 1 || answer == 2);
+            } while (answer != 1);
 
         };
 
