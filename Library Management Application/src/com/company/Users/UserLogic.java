@@ -16,4 +16,8 @@ public class UserLogic {
 
         return null; // didn't find any members, don't return anything.
     }
+
+    public void addMember (Member member) {
+        users.add(member);
+    }
 }
