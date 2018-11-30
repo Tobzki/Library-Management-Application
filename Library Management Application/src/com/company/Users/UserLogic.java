@@ -7,10 +7,18 @@ public class UserLogic {
     private ArrayList<Account> users;
     private Account loggedIn;
 
-    public void addMember(Member member) {
+    public UserLogic () {
+        users = new ArrayList<>();
+    }
 
-        users.add(member);
+    public Account getUser (String ssn) {
+        for (Account user : users) {
+            if (ssn.equals(user.getSsn())) {
+                return user;
+            }
+        }
 
+        return null; // didn't find any members, don't return anything.
     }
 
     public void viewMembers() {
@@ -21,5 +29,9 @@ public class UserLogic {
         }
         result += "***************************\n";
 
+    }
+
+    public void addMember (Member member) {
+        users.add(member);
     }
 }
