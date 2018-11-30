@@ -1,5 +1,5 @@
 package com.company.OptionAction;
-
+import com.company.Util;
 import java.util.Scanner;
 
 public class MenuHandler {
@@ -28,7 +28,36 @@ public class MenuHandler {
     }
 
     private void init () {
-        // TODO: Set up custom options and menus here
+        Runnable addMemberAction = () -> {
+
+            String ssn;
+            String name;
+            String address;
+            String telePhoneNumber;
+            String userName, password;
+            int answer;
+
+            do {
+            ssn = Util.safeStringInput("SSN");
+            name = Util.safeStringInput("Name");
+            address = Util.safeStringInput("Address");
+            telePhoneNumber = Util.safeStringInput("Telephonenumber");
+            userName = Util.safeStringInput("Username");
+            password = Util.safeStringInput("Password");
+
+                System.out.printf("\n- - - This is your information below - - -");
+                System.out.printf("\n\nSSN: %s%nName: %s%nAddress: %s%nTelephonenumber: %s%nUsername: %s%nPassword: %s%n", ssn, name, address, telePhoneNumber, userName, password);
+                answer = Util.safeIntInput("\n\nIs this information valid? Press 1 for Yes and 2 for No.");
+                if (answer == 1) {
+
+                    System.out.println("You are now registered in our system " + name + ". Thanks for your contribution!");
+                } else if (answer == 2){
+                    System.out.println("\n\nPlease be more accurate with your information.\n\n");
+                }
+            } while (answer != 1);
+        };
+
+        Option addMember = new Option("Add Member", addMemberAction);
     }
 
     private void backAction () {
