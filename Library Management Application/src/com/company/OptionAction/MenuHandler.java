@@ -73,7 +73,7 @@ public class MenuHandler {
         Menu viewMembers = new Menu(addMember, viewMember);
         setActiveMenu(viewMembers);
 
-    }
+}
 
     private void backAction () {
         setActiveMenu(lastMenu);
