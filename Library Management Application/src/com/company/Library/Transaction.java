@@ -11,7 +11,7 @@ public class Transaction {
     private Date dateOfIssue, dueDate, returnDate;
     private double lateFee;
 
-    public Transaction (int bookId, Date dateOfIssue, Date dueDate) {
+    public Transaction(int bookId, Date dateOfIssue, Date dueDate) {
         transactionId = ++idCounter;
 
         this.bookId = bookId;
