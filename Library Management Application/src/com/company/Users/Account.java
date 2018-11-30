@@ -38,4 +38,13 @@ public abstract class Account {
             this.telephone = telephone;
         }
     }
+
+    @Override
+    public String toString() {
+        String result;
+        result = "***************************\n";
+        result += "Name: " + name + "\nSSN: " + ssn + "\nPhonenumber: " + telephone;
+        result += "\n***************************\n";
+        return result;
+    }
 }

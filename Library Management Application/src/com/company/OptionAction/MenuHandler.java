@@ -62,11 +62,20 @@ public class MenuHandler {
                     System.out.println("\n\nPlease be more accurate with your information.\n\n");
                 }
             } while (answer != 1);
+
         };
 
 
         Option addMember = new Option("Add Member", addMemberAction);
-    }
+
+        Runnable viewMemberAction = () -> {
+
+            userLogic.toString();
+        };
+
+        Option viewMember = new Option("View Member", userLogic::viewMembers);
+
+}
 
     private void backAction () {
         setActiveMenu(lastMenu);
