@@ -1,7 +1,6 @@
 package com.company.Users;
 
 import com.company.Util;
-
 import java.util.ArrayList;
 
 public class UserLogic {
@@ -13,18 +12,24 @@ public class UserLogic {
         users = new ArrayList<>();
     }
 
-    public void editUser (String ssn) {
+    public Account editUser (String ssn) {
         if (getUser(ssn) != null) {
             Member memberToEdit = (Member) getUser(ssn);
             String tmpName = Util.safeStringInput("Name", memberToEdit.getName());
             memberToEdit.setName(tmpName);
+
             String tmpTel = Util.safeStringInput("Telephone", memberToEdit.getTelephone());
             memberToEdit.setTelephone(tmpTel);
+
             String tmpAddress = Util.safeStringInput("Address", memberToEdit.getAddress());
             memberToEdit.setAddress(tmpAddress);
+
             String tmpPassword = Util.safeStringInput("Password", memberToEdit.getPassword());
             memberToEdit.setPassword(tmpPassword);
 
+            return memberToEdit;
+        } else {
+            return getUser(ssn); // should just be null, since there's no user with that ssn
         }
     }
 

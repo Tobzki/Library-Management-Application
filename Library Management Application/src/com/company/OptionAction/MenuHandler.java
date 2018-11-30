@@ -13,7 +13,6 @@ public class MenuHandler {
     private Menu lastMenu; // records what menu was previously visited
 
     // Custom menus
-    private Menu debugMemberMenu;
 
     private Option back;
     private Option exit;
@@ -66,18 +65,14 @@ public class MenuHandler {
         }; // Option addMember
         Runnable editMemberAction = () -> {
             String ssn = Util.safeStringInput("SSN of user to edit");
-            userLogic.editUser(ssn);
+            if (userLogic.editUser(ssn) == null) {
+                System.out.println("Sorry, no user was found.");
+            }
         }; // Option edit a member based on SSN.
-        Runnable viewMemberAction = () -> {
-            userLogic.toString();
-        };
 
         Option viewMember = new Option("View Member", userLogic::viewMembers);
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
-
-        debugMemberMenu = new Menu(addMember, editMember, viewMember);
-        setActiveMenu(debugMemberMenu);
     }
 
     private void backAction () {
