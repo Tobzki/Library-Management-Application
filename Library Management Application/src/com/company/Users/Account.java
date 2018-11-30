@@ -21,6 +21,18 @@ public abstract class Account {
         return ssn;
     }
 
+    public String getName () {
+        return name;
+    }
+
+    public String getAddress () {
+        return address;
+    }
+
+    public String getTelephone () {
+        return telephone;
+    }
+
     public void setName (String name) {
         if (!name.equals("")) {
             this.name = name;

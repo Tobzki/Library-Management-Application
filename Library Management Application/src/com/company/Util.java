@@ -70,4 +70,20 @@ public class Util {
         return result;
     }
 
+    public static String safeStringInput (String prompt, String standard) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("(" + standard + ")" + prompt + " >> ");
+        String result;
+        do {
+            result = input.nextLine();
+
+            if (result.equals(" ") || result.equals("")) {
+                result = standard;
+                break;
+            }
+        } while (result.equals("") || result.equals(" "));
+
+        return result;
+    }
+
 }

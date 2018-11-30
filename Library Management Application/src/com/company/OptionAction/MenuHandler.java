@@ -13,7 +13,7 @@ public class MenuHandler {
     private Menu lastMenu; // records what menu was previously visited
 
     // Custom menus
-    
+    private Menu debugMemberMenu;
 
     private Option back;
     private Option exit;
@@ -63,10 +63,17 @@ public class MenuHandler {
                     System.out.println("\n\nPlease be more accurate with your information.\n\n");
                 }
             } while (answer != 1);
-        };
-
+        }; // Option addMember
+        Runnable editMemberAction = () -> {
+            String ssn = Util.safeStringInput("SSN of user to edit");
+            userLogic.editUser(ssn);
+        }; // Option edit a member based on SSN.
 
         Option addMember = new Option("Add Member", addMemberAction);
+        Option editMember = new Option("Edit Member", editMemberAction);
+
+        debugMemberMenu = new Menu(addMember, editMember);
+        setActiveMenu(debugMemberMenu);
     }
 
     private void backAction () {
