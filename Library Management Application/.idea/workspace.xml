@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78a4cb9a-0cd1-4ee2-9a7b-10dd987f8152" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/LibraryApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/LibraryApp.java" afterDir="false" />
-    </list>
+    <list default="true" id="78a4cb9a-0cd1-4ee2-9a7b-10dd987f8152" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +166,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543501830875" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543565537597" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
