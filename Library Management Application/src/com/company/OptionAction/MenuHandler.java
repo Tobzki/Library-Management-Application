@@ -74,8 +74,6 @@ public class MenuHandler {
         };
 
         Option viewMember = new Option("View Member", userLogic::viewMembers);
-        Menu viewMembers = new Menu(addMember, viewMember);
-        setActiveMenu(viewMembers);
 
 }
 
