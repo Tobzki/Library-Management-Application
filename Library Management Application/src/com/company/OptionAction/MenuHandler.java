@@ -68,11 +68,15 @@ public class MenuHandler {
             String ssn = Util.safeStringInput("SSN of user to edit");
             userLogic.editUser(ssn);
         }; // Option edit a member based on SSN.
+        Runnable viewMemberAction = () -> {
+            userLogic.toString();
+        };
 
+        Option viewMember = new Option("View Member", userLogic::viewMembers);
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
 
-        debugMemberMenu = new Menu(addMember, editMember);
+        debugMemberMenu = new Menu(addMember, editMember, viewMember);
         setActiveMenu(debugMemberMenu);
     }
 

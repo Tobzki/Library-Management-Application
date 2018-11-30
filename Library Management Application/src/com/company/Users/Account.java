@@ -60,4 +60,13 @@ public abstract class Account {
             this.password = password;
         }
     }
+
+    @Override
+    public String toString() {
+        String result;
+        result = "***************************\n";
+        result += "Name: " + name + "\nSSN: " + ssn + "\nPhonenumber: " + telephone;
+        result += "\n***************************\n";
+        return result;
+    }
 }
