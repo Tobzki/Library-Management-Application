@@ -33,6 +33,10 @@ public abstract class Account {
         return telephone;
     }
 
+    public String getPassword () {
+        return password;
+    }
+
     public void setName (String name) {
         if (!name.equals("")) {
             this.name = name;
@@ -48,6 +52,12 @@ public abstract class Account {
     public void setTelephone (String telephone) {
         if (!telephone.equals("")) {
             this.telephone = telephone;
+        }
+    }
+
+    public void setPassword (String password) {
+        if (!password.equals("")) {
+            this.password = password;
         }
     }
 }

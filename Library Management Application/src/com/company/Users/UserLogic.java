@@ -9,10 +9,22 @@ public class UserLogic {
     private ArrayList<Account> users;
     private Account loggedIn;
 
+    public UserLogic () {
+        users = new ArrayList<>();
+    }
+
     public void editUser (String ssn) {
         if (getUser(ssn) != null) {
-            Member memberToEdit = (Member)getUser(ssn);
-            String tempSsn = Util.safeStringInput("SSN", memberToEdit.getSsn());
+            Member memberToEdit = (Member) getUser(ssn);
+            String tmpName = Util.safeStringInput("Name", memberToEdit.getName());
+            memberToEdit.setName(tmpName);
+            String tmpTel = Util.safeStringInput("Telephone", memberToEdit.getTelephone());
+            memberToEdit.setTelephone(tmpTel);
+            String tmpAddress = Util.safeStringInput("Address", memberToEdit.getAddress());
+            memberToEdit.setAddress(tmpAddress);
+            String tmpPassword = Util.safeStringInput("Password", memberToEdit.getPassword());
+            memberToEdit.setPassword(tmpPassword);
+
         }
     }
 
