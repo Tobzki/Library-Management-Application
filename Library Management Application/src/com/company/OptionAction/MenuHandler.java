@@ -40,20 +40,15 @@ public class MenuHandler {
     private void init() {
         Runnable addMemberAction = () -> {
 
-            String ssn;
-            String name;
-            String address;
-            String telePhoneNumber;
-            String userName, password;
             int answer;
 
             do {
-                ssn = Util.safeStringInput("SSN");
-                name = Util.safeStringInput("Name");
-                address = Util.safeStringInput("Address");
-                telePhoneNumber = Util.safeStringInput("Telephonenumber");
-                userName = Util.safeStringInput("Username");
-                password = Util.safeStringInput("Password");
+                String ssn = Util.safeStringInput("SSN");
+                String name = Util.safeStringInput("Name");
+                String address = Util.safeStringInput("Address");
+                String telePhoneNumber = Util.safeStringInput("Telephonenumber");
+                String userName = Util.safeStringInput("Username");
+                String password = Util.safeStringInput("Password");
 
                 System.out.print("\n- - - This is your information below - - -");
                 System.out.printf("\n\nSSN: %s%nName: %s%nAddress: %s%nTelephonenumber: %s%nUsername: %s%nPassword: %s%n", ssn, name, address, telePhoneNumber, userName, password);
@@ -77,17 +72,15 @@ public class MenuHandler {
         }; // Option edit a member based on SSN.
 
         Runnable addBookInformationAction = () -> {
-            String isbn;
-            String name, publisher;
-            String language;
-            int numberOfPages;
+
             int answer;
+
             do {
-                isbn = Util.safeStringInput("ISBN");
-                name = Util.safeStringInput("Name");
-                publisher = Util.safeStringInput("Publisher");
-                language = Util.safeStringInput("Language");
-                numberOfPages = Util.safeIntInput("Number of pages");
+                String isbn = Util.safeStringInput("ISBN");
+                String name = Util.safeStringInput("Name");
+                String publisher = Util.safeStringInput("Publisher");
+                String language = Util.safeStringInput("Language");
+                int numberOfPages = Util.safeIntInput("Number of pages");
 
                 System.out.print("\n- - - This is your information below - - -");
                 System.out.printf("\n\nISBN: %s%nName: %s%nPublisher: %s%nLanguage: %s%nNumber of pages: %s%n", isbn, name, publisher, language, numberOfPages);
