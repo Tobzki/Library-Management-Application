@@ -58,10 +58,21 @@ public class MenuHandler {
                 } else if (answer == 2){
                     System.out.println("\n\nPlease be more accurate with your information.\n\n");
                 }
-            } while (answer != 1);
+            } while (answer == 1 || answer == 2);
+
         };
 
         Option addMember = new Option("Add Member", addMemberAction);
+
+        Runnable viewMemberAction = () -> {
+
+            userLogic.toString();
+        };
+
+        Option viewMember = new Option("View Member", userLogic::viewMembers);
+        Menu viewMembers = new Menu(addMember, viewMember);
+        setActiveMenu(viewMembers);
+
     }
 
     private void backAction () {
