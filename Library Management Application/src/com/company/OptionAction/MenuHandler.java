@@ -13,7 +13,6 @@ public class MenuHandler {
     private Menu lastMenu; // records what menu was previously visited
 
     // Custom menus
-    private Menu debugMembers;
 
     private Option back;
     private Option exit;
@@ -67,11 +66,6 @@ public class MenuHandler {
 
 
         Option addMember = new Option("Add Member", addMemberAction);
-        debugMembers = new Menu(addMember);
-    }
-
-    public Menu getDebugMembers () {
-        return debugMembers;
     }
 
     private void backAction () {
