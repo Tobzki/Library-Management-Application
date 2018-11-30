@@ -13,6 +13,7 @@ public class MenuHandler {
     private Menu lastMenu; // records what menu was previously visited
 
     // Custom menus
+    private Menu debugMembers;
 
     private Option back;
     private Option exit;
@@ -50,7 +51,7 @@ public class MenuHandler {
             userName = Util.safeStringInput("Username");
             password = Util.safeStringInput("Password");
 
-                System.out.printf("\n- - - This is your information below - - -");
+                System.out.print("\n- - - This is your information below - - -");
                 System.out.printf("\n\nSSN: %s%nName: %s%nAddress: %s%nTelephonenumber: %s%nUsername: %s%nPassword: %s%n", ssn, name, address, telePhoneNumber, userName, password);
                 answer = Util.safeIntInput("\n\nIs this information valid? Press 1 for Yes and 2 for No.");
                 if (answer == 1) {
@@ -66,6 +67,11 @@ public class MenuHandler {
 
 
         Option addMember = new Option("Add Member", addMemberAction);
+        debugMembers = new Menu(addMember);
+    }
+
+    public Menu getDebugMembers () {
+        return debugMembers;
     }
 
     private void backAction () {

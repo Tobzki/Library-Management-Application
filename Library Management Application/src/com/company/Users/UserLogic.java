@@ -7,6 +7,10 @@ public class UserLogic {
     private ArrayList<Account> users;
     private Account loggedIn;
 
+    public UserLogic () {
+        users = new ArrayList<>();
+    }
+
     public Account getUser (String ssn) {
         for (Account user : users) {
             if (ssn.equals(user.getSsn())) {
