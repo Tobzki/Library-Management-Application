@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Util {
 
-    public static int safeIntInput (String prompt) {
+    public static int safeIntInput(String prompt) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt + " >> ");
         int result = -2;
@@ -24,12 +24,12 @@ public class Util {
                 input.nextLine();
                 result = -1;
             }
-        } while(result == -1);
+        } while (result == -1);
 
         return result;
     }
 
-    public static int safeIntInput (String prompt, int maxValue) {
+    public static int safeIntInput(String prompt, int maxValue) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt + " >> ");
         int result = -2;
@@ -48,12 +48,12 @@ public class Util {
                 input.nextLine();
                 result = -1;
             }
-        } while(result == -1);
+        } while (result == -1);
 
         return result;
     }
 
-    public static String safeStringInput (String prompt) {
+    public static String safeStringInput(String prompt) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt + " >> ");
         String result = "";
@@ -70,7 +70,7 @@ public class Util {
         return result;
     }
 
-    public static String safeStringInput (String prompt, String standard) {
+    public static String safeStringInput(String prompt, String standard) {
         Scanner input = new Scanner(System.in);
         System.out.print("(" + standard + ")" + prompt + " >> ");
         String result;

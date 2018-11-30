@@ -8,11 +8,11 @@ public class Menu {
     private Option[] options;
     private Scanner input = new Scanner(System.in);
 
-    public Menu (Option... options) {
+    public Menu(Option... options) {
         this.options = options;
     }
 
-    private void printMenu () {
+    private void printMenu() {
         System.out.println("--- Menu ---");
         for (int i = 0; i < options.length; i++) {
             System.out.println((i + 1) + ") " + options[i]);
@@ -23,7 +23,7 @@ public class Menu {
      * Runs 'this' menu object and handles command input.
      * If command input is invalid, the user gets prompted to try again.
      */
-    public void runMenu () {
+    public void runMenu() {
         printMenu();
 
         System.out.print("Command >> ");

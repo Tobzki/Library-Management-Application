@@ -9,7 +9,7 @@ public class Book {
     private String language;
     private String publisher;
 
-    public Book (String isbn, String title, int numberOfPages, String language, String publisher, String... authors) {
+    public Book(String isbn, String title, int numberOfPages, String language, String publisher, String... authors) {
         this.isbn = isbn;
         this.title = title;
         this.authors = authors;
@@ -18,24 +18,24 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public String getTitle () {
+    public String getTitle() {
         return title;
     }
 
-    public String getIsbn () {
+    public String getIsbn() {
         return isbn;
     }
 
-    public String[] getAuthors () {
+    public String[] getAuthors() {
         return authors;
     }
 
-    public String getPublisher () {
+    public String getPublisher() {
         return publisher;
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         StringBuilder authorsString = new StringBuilder();
         String result;
         result = "***************************\n";

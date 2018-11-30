@@ -8,11 +8,11 @@ public class UserLogic {
     private ArrayList<Account> users;
     private Account loggedIn;
 
-    public UserLogic () {
+    public UserLogic() {
         users = new ArrayList<>();
     }
 
-    public Account editUser (String ssn) {
+    public Account editUser(String ssn) {
         if (getUser(ssn) != null) {
             Member memberToEdit = (Member) getUser(ssn);
             String tmpName = Util.safeStringInput("Name", memberToEdit.getName());
@@ -33,7 +33,7 @@ public class UserLogic {
         }
     }
 
-    public Account getUser (String ssn) {
+    public Account getUser(String ssn) {
         for (Account user : users) {
             if (ssn.equals(user.getSsn())) {
                 return user;
@@ -53,7 +53,7 @@ public class UserLogic {
 
     }
 
-    public void addMember (Member member) {
+    public void addMember(Member member) {
         users.add(member);
     }
 }

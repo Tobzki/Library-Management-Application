@@ -1,5 +1,7 @@
 package com.company.Library;
 
+import com.company.OptionAction.MenuHandler;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,17 +14,18 @@ public class LibraryLogic {
         inventory.addAll(Arrays.asList(books));
     }
 
-    public LibraryLogic () {
+    public LibraryLogic() {
         inventory = new ArrayList<>();
     }
 
     /**
      * Takes a query of n symbols and searches for any books with any attributes
      * that correspond with the query.
+     *
      * @param query Search query entered by the user.
      * @return A list of books with attributes matching that query.
      */
-    public ArrayList<Book> searchBook (String query) {
+    public ArrayList<Book> searchBook(String query) {
         ArrayList<Book> result = new ArrayList<>();
         if (query.equals("")) { // Just throw back an empty arraylist since they didn't enter a query
             return result;
@@ -32,7 +35,7 @@ public class LibraryLogic {
 
         for (int i = 0; i < inventory.size(); i++) {
             Book current = inventory.get(i);
-            String  subIsbn = "",
+            String subIsbn = "",
                     subTitle = "",
                     subPublisher = "";
 
@@ -65,4 +68,9 @@ public class LibraryLogic {
 
         return result;
     }
+
+    public void addBook(Book book) {
+        inventory.add(book);
+    }
+
 }

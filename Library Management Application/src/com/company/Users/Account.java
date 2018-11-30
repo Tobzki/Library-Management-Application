@@ -8,7 +8,7 @@ public abstract class Account {
     private String telephone;
     private String username, password;
 
-    public Account (String ssn, String name, String address, String telephone, String username, String password) {
+    public Account(String ssn, String name, String address, String telephone, String username, String password) {
         this.ssn = ssn;
         this.name = name;
         this.address = address;
@@ -17,45 +17,45 @@ public abstract class Account {
         this.password = password;
     }
 
-    public String getSsn () {
+    public String getSsn() {
         return ssn;
     }
 
-    public String getName () {
+    public String getName() {
         return name;
     }
 
-    public String getAddress () {
+    public String getAddress() {
         return address;
     }
 
-    public String getTelephone () {
+    public String getTelephone() {
         return telephone;
     }
 
-    public String getPassword () {
+    public String getPassword() {
         return password;
     }
 
-    public void setName (String name) {
+    public void setName(String name) {
         if (!name.equals("")) {
             this.name = name;
         }
     }
 
-    public void setAddress (String address) {
+    public void setAddress(String address) {
         if (!address.equals("")) {
             this.address = address;
         }
     }
 
-    public void setTelephone (String telephone) {
+    public void setTelephone(String telephone) {
         if (!telephone.equals("")) {
             this.telephone = telephone;
         }
     }
 
-    public void setPassword (String password) {
+    public void setPassword(String password) {
         if (!password.equals("")) {
             this.password = password;
         }
