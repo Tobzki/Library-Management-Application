@@ -1,32 +1,19 @@
 package com.company.Library;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LibraryLogic {
 
     private ArrayList<Book> inventory;
 
-    // DEBUG
+    public LibraryLogic(Book... books) {
+        inventory = new ArrayList<>();
+        inventory.addAll(Arrays.asList(books));
+    }
+
     public LibraryLogic () {
         inventory = new ArrayList<>();
-        inventory.add(new Book(
-                "123-456-789-1",
-                "The Alchemist",
-                103,
-                "Engelska",
-                "Bonnier",
-                "Paulo Coelho", "Bruce Springsteen"));
-        inventory.add(new Book(
-                "123-342-789-1",
-                "The Statanic Bible",
-                113,
-                "Engelska",
-                "Bonnier",
-                "Anton Szandor Lavey"));
-    }
-    // DEBUG
-    public ArrayList<Book> getInventory () {
-        return inventory;
     }
 
     /**
@@ -37,6 +24,10 @@ public class LibraryLogic {
      */
     public ArrayList<Book> searchBook (String query) {
         ArrayList<Book> result = new ArrayList<>();
+        if (query.equals("")) { // Just throw back an empty arraylist since they didn't enter a query
+            return result;
+        }
+
         query = query.toLowerCase();
 
         for (int i = 0; i < inventory.size(); i++) {
