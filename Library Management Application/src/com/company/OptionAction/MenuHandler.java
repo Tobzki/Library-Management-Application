@@ -63,14 +63,12 @@ public class MenuHandler {
                 }
             } while (answer != 1);
         }; // Option addMember
-
         Runnable editMemberAction = () -> {
             String ssn = Util.safeStringInput("SSN of user to edit");
             if (userLogic.editUser(ssn) == null) {
                 System.out.println("Sorry, no user was found.");
             }
         }; // Option edit a member based on SSN.
-
         Runnable addBookInformationAction = () -> {
 
             int answer;
