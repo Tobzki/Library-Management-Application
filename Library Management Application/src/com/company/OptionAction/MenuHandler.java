@@ -18,6 +18,7 @@ public class MenuHandler {
     private Menu lastMenu; // records what menu was previously visited
 
     // Custom menus
+    private Menu testMenu; // keep this for debugging
 
     private Option back;
     private Option exit;
@@ -99,6 +100,9 @@ public class MenuHandler {
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
         Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
+
+        testMenu = new Menu(addMember, viewMember, editMember, addBookInformation);
+        setActiveMenu(testMenu);
     }
 
     private void backAction() {
