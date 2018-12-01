@@ -70,6 +70,7 @@ public class MenuHandler {
                 System.out.println("Sorry, no user was found.");
             }
         }; // Option edit a member based on SSN.
+
         Runnable addBookInformationAction = () -> {
 
             int answer;
@@ -81,27 +82,42 @@ public class MenuHandler {
                 String language = Util.safeStringInput("Language");
                 int numberOfPages = Util.safeIntInput("Number of pages");
 
+                int numberOfAuthors = Util.safeIntInput("Number of authors");
+                String[] authors = new String[numberOfAuthors];
+                for (int i = 0; i < authors.length; i++) {
+                    authors[i] = Util.safeStringInput("Name of author #" + (i + 1));
+                }
+
                 System.out.print("\n- - - This is your information below - - -");
                 System.out.printf("\n\nISBN: %s%nName: %s%nPublisher: %s%nLanguage: %s%nNumber of pages: %s%n", isbn, name, publisher, language, numberOfPages);
                 answer = Util.safeIntInput("\n\nIs this information valid? Press 1 for Yes and 2 for No.");
                 if (answer == 1) {
 
                     System.out.println("\n\nThe book '" + name + "' is now added into the library. Thank you!\n\n");
-                    Book book = new Book(isbn, name, numberOfPages, language, publisher);
+                    Book book = new Book(isbn, name, numberOfPages, language, publisher, authors);
                     libraryLogic.addBook(book);
                 } else if (answer == 2) {
                     System.out.println("\n\nPlease be more accurate with your information. \n\n");
                 }
 
             } while (answer != 1);
-        };
+        }; // Option add book
+        Runnable searchBookAction = () -> {
+            String query = Util.safeStringInput("Search query");
+
+            for (Book book : libraryLogic.searchBook(query)) {
+                System.out.println(book);
+            }
+        }; // Option search book
 
         Option viewMember = new Option("View Member", userLogic::viewMembers);
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
-        Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
 
-        testMenu = new Menu(addMember, viewMember, editMember, addBookInformation);
+        Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
+        Option searchBook = new Option("Search Book", searchBookAction);
+
+        testMenu = new Menu(addMember, viewMember, editMember, addBookInformation, searchBook);
         setActiveMenu(testMenu);
     }
 

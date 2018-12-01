@@ -44,7 +44,8 @@ public class Book {
             if (i == authors.length - 1) {
                 authorsString.append(authors[i]);
             } else {
-                authorsString.append(authors[i] + ", ");
+                authorsString.append(authors[i]);
+                authorsString.append(", ");
             }
         }
         result += authorsString.toString() + "\n";
