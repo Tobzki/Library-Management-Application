@@ -108,6 +108,14 @@ public class MenuHandler {
                 System.out.println(book);
             }
         }; // Option search book
+        Runnable removeBookAction = () -> {
+            String isbn = Util.safeStringInput("ISBN of book to remove");
+            if (libraryLogic.removeBook(isbn)) {
+                System.out.println("Book was successfully removed.");
+            } else {
+                System.out.println("No book was removed.");
+            }
+        };
 
         Option viewMember = new Option("View Member", userLogic::viewMembers);
         Option addMember = new Option("Add Member", addMemberAction);
@@ -115,8 +123,9 @@ public class MenuHandler {
 
         Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
         Option searchBook = new Option("Search Book", searchBookAction);
+        Option removeBook = new Option("Remove Book", removeBookAction);
 
-        testMenu = new Menu(addMember, viewMember, editMember, addBookInformation, searchBook);
+        testMenu = new Menu(addMember, viewMember, editMember, addBookInformation, searchBook, removeBook);
         setActiveMenu(testMenu);
     }
 

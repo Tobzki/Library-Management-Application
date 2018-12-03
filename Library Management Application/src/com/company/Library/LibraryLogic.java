@@ -1,6 +1,7 @@
 package com.company.Library;
 
 import com.company.OptionAction.MenuHandler;
+import com.company.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,29 +77,22 @@ public class LibraryLogic {
     }
 
 
-    public boolean removeBooks() {
-        String isbn;
-
+    public boolean removeBook(String isbn) {
         boolean successful = false;
-        do {
-            System.out.println("Please enter the ISBN number of the book you wish to delete");
-            isbn = input.next();
-            for (int i = 0; i < inventory.size(); i++) {
-                if (isbn == inventory.get(i).getisbn()) {
-                    System.out.println("The Book " + inventory.get(i) + " was removed");
+        for (int i = 0; i < inventory.size(); i++) {
+            if (isbn.equals(inventory.get(i).getisbn())) {
+                // Make sure user wants to delete this book by displaying title
+                String prompt = "Do you really want to delete '" + inventory.get(i).getTitle() + "'?\n1) Yes 2) No\n";
+                int answer = Util.safeIntInput(prompt, 2);
+
+                if (answer == 1) {
                     inventory.remove(i);
                     successful = true;
-                    break;
+                } else {
+                    successful = true;
                 }
+                break;
             }
-            if (!successful) {
-                System.out.println("Book ID " + isbn + " does not exist");
-            }
-
-        } while (successful = true);
-        {
-            System.out.println("Worked");
-
         }
         return successful;
     }
