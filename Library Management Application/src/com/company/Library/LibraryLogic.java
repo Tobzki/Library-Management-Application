@@ -33,7 +33,7 @@ public class LibraryLogic {
 
         for (int i = 0; i < inventory.size(); i++) {
             Book current = inventory.get(i);
-            String subIsbn = "",
+            String  subIsbn = "",
                     subTitle = "",
                     subPublisher = "";
 
