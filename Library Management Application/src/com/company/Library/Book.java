@@ -18,4 +18,7 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public String getisbn() {
+        return isbn;
+    }
 }
