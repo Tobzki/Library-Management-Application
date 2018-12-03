@@ -69,6 +69,14 @@ public class MenuHandler {
                 System.out.println("Sorry, no user was found.");
             }
         }; // Option edit a member based on SSN.
+        Runnable removeMemberAction = () -> {
+            String ssn = Util.safeStringInput("SSN of member to remove");
+            if (userLogic.removeUser(ssn)) {
+                System.out.println("Successfully removed member.");
+            } else {
+                System.out.println("No member was removed.");
+            }
+        };
 
         Runnable addBookInformationAction = () -> {
 
@@ -120,12 +128,13 @@ public class MenuHandler {
         Option viewMember = new Option("View Member", userLogic::viewMembers);
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
+        Option removeMember = new Option("Remove Member", removeMemberAction);
 
         Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
         Option searchBook = new Option("Search Book", searchBookAction);
         Option removeBook = new Option("Remove Book", removeBookAction);
 
-        testMenu = new Menu(addMember, viewMember, editMember, addBookInformation, searchBook, removeBook);
+        testMenu = new Menu(addMember, viewMember, editMember, removeMember, addBookInformation, searchBook, removeBook);
         setActiveMenu(testMenu);
     }
 

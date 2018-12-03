@@ -1,6 +1,7 @@
 package com.company.Users;
 
 import com.company.Util;
+
 import java.util.ArrayList;
 
 public class UserLogic {
@@ -52,5 +53,25 @@ public class UserLogic {
 
     public void addMember(Member member) {
         users.add(member);
+    }
+
+    public boolean removeUser(String ssn) {
+        boolean successful = false;
+        for (int i = 0; i < users.size(); i++) {
+            if (ssn.equals(users.get(i).getSsn())) {
+                // Make sure user wants to delete this book by displaying title
+                String prompt = "Do you really want to delete '" + users.get(i).getName() + "'?\n1) Yes 2) No\n";
+                int answer = Util.safeIntInput(prompt, 2);
+
+                if (answer == 1) {
+                    users.remove(i);
+                    successful = true;
+                } else {
+                    successful = true;
+                }
+                break;
+            }
+        }
+        return successful;
     }
 }
