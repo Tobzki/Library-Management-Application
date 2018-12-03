@@ -51,8 +51,15 @@ public class UserLogic {
 
     }
 
-    public void addMember(Member member) {
+    public boolean addMember(Member member) {
+        for (Account mem : users) {
+            if (mem.getSsn().equals(member.getSsn())) {
+                return false;
+            }
+        }
+
         users.add(member);
+        return true;
     }
 
     public boolean removeUser(String ssn) {

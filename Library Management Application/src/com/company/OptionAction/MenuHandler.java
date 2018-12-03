@@ -41,7 +41,6 @@ public class MenuHandler {
     private void init() {
         Runnable addMemberAction = () -> {
             int answer;
-
             do {
                 String ssn = Util.safeStringInput("SSN");
                 String name = Util.safeStringInput("Name");
@@ -57,7 +56,11 @@ public class MenuHandler {
 
                     System.out.println("You are now registered in our system '" + name + "'. Thanks for your contribution!");
                     Member member = new Member(ssn, name, address, telePhoneNumber, userName, password);
-                    userLogic.addMember(member);
+                    if (userLogic.addMember(member)) {
+                        System.out.println("Member added!");
+                    } else {
+                        System.out.println("That SSN is already registered.");
+                    }
                 } else if (answer == 2) {
                     System.out.println("\n\nPlease be more accurate with your information.\n\n");
                 }
