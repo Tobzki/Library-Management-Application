@@ -40,7 +40,6 @@ public class MenuHandler {
 
     private void init() {
         Runnable addMemberAction = () -> {
-
             int answer;
 
             do {
