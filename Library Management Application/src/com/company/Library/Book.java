@@ -18,6 +18,7 @@ public class Book {
         this.publisher = publisher;
     }
 
+
     public String getTitle() {
         return title;
     }
@@ -53,4 +54,8 @@ public class Book {
         result += "***************************\n";
         return result;
     }
+    public String getisbn() {
+        return isbn;
+    }
+
 }
