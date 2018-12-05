@@ -1,5 +1,6 @@
 package com.company.Library;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Transaction {
@@ -17,6 +18,17 @@ public class Transaction {
         this.bookId = bookId;
         this.dateOfIssue = dateOfIssue;
         this.dueDate = dueDate;
+    }
+
+    public Transaction (String bookId) {
+        transactionId = ++idCounter;
+        this.bookId = bookId;
+        dateOfIssue = new Date();
+
+        Calendar temp = Calendar.getInstance();
+        temp.setTime(dateOfIssue);
+        temp.add(Calendar.MONTH, 1);
+        this.dueDate = temp.getTime();
     }
 
     @Override

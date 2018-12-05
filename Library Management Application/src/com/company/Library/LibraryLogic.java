@@ -75,7 +75,6 @@ public class LibraryLogic {
         inventory.add(book);
     }
 
-
     public boolean removeBook(String isbn) {
         boolean successful = false;
         for (int i = 0; i < inventory.size(); i++) {

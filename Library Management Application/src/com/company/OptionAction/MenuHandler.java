@@ -43,6 +43,7 @@ public class MenuHandler {
     }
 
     private void init() {
+        // Option action for add member
         Runnable addMemberAction = () -> {
             String ssn = Util.safeStringInput("SSN");
             String name = Util.safeStringInput("Name");
@@ -56,13 +57,13 @@ public class MenuHandler {
             } else {
                 System.out.println("Something went wrong, maybe the user is already in the system?");
             }
-        }; // Option addMemberN.
+        };
         Runnable editUserAction = () -> {
             String ssn = Util.safeStringInput("SSN of user to edit");
             if (userLogic.editUser(ssn)) {
-                System.out.println("Yes boi");
+                System.out.println("User was edited.");
             } else {
-                System.out.println("No boi");
+                System.out.println("No user was found.");
             }
         };
         Runnable removeMemberAction = () -> {
@@ -79,14 +80,10 @@ public class MenuHandler {
             if (book != null) {
                 int confirm = Util.safeIntInput("Is '" + book.getTitle() + "' the correct book?\n1) Yes 2) No", 2);
                 if (confirm == 1) {
-                    Date transactionDate = new Date();
-                    Calendar tmp = Calendar.getInstance();
-                    tmp.setTime(transactionDate);
-                    tmp.add(Calendar.MONTH, 1);
-                    Date dueDate = tmp.getTime();
-                    Transaction transaction = new Transaction(isbn, transactionDate, dueDate);
-                    userLogic.makeTransaction(transaction);
+                    userLogic.makeTransaction(book);
                 }
+            } else {
+                System.out.println("No book was found with that ISBN.");
             }
         };
         Runnable loginAction = () -> {

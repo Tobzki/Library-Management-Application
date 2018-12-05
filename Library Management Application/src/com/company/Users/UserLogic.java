@@ -1,10 +1,13 @@
 package com.company.Users;
 
+import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
 import com.company.Library.Transaction;
 import com.company.Util;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class UserLogic {
 
@@ -114,17 +117,26 @@ public class UserLogic {
         }
     }
 
-    public void makeTransaction (Transaction transaction) {
-        if (loggedIn instanceof Member) {
+    public void makeTransaction (Book book) {
+        if (authorize() == USER_STATE.MEMBER) {
+            Transaction transaction = new Transaction(book.getIsbn());
             ((Member) loggedIn).addTransaction(transaction);
+        } else {
+            System.out.println("No user is logged in.");
         }
     }
 
     public void viewTransactions () {
         if (authorize() == USER_STATE.MEMBER) {
-            for (Transaction transaction : ((Member) loggedIn).getTransactions()) {
-                System.out.println(transaction);
+            if (((Member) loggedIn).getTransactions().size() > 0) {
+                for (Transaction transaction : ((Member) loggedIn).getTransactions()) {
+                    System.out.println(transaction);
+                }
+            } else {
+                System.out.println("No transactions to show.");
             }
+        } else {
+            System.out.println("No user is logged in.");
         }
     }
 
