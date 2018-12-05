@@ -98,12 +98,9 @@ public class MenuHandler {
         };
 
         Runnable addBookInformationAction = () -> {
-
-            int answer;
-
-            do {
+            if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
                 String isbn = Util.safeStringInput("ISBN");
-                String name = Util.safeStringInput("Name");
+                String title = Util.safeStringInput("Name");
                 String publisher = Util.safeStringInput("Publisher");
                 String language = Util.safeStringInput("Language");
                 int numberOfPages = Util.safeIntInput("Number of pages");
@@ -114,19 +111,14 @@ public class MenuHandler {
                     authors[i] = Util.safeStringInput("Name of author #" + (i + 1));
                 }
 
-                System.out.print("\n- - - This is your information below - - -");
-                System.out.printf("\n\nISBN: %s%nName: %s%nPublisher: %s%nLanguage: %s%nNumber of pages: %s%n", isbn, name, publisher, language, numberOfPages);
-                answer = Util.safeIntInput("\n\nIs this information valid? Press 1 for Yes and 2 for No.");
-                if (answer == 1) {
-
-                    System.out.println("\n\nThe book '" + name + "' is now added into the library. Thank you!\n\n");
-                    Book book = new Book(isbn, name, numberOfPages, language, publisher, authors);
-                    libraryLogic.addBook(book);
-                } else if (answer == 2) {
-                    System.out.println("\n\nPlease be more accurate with your information. \n\n");
+                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, authors))) {
+                    System.out.println("Book was added.");
+                } else {
+                    System.out.println("Something went wrong, maybe the book is already in the system?");
                 }
-
-            } while (answer != 1);
+            } else {
+                System.out.println("You are not authorized to do this.");
+            }
         }; // Option add book
         Runnable searchBookAction = () -> {
             String query = Util.safeStringInput("Search query");

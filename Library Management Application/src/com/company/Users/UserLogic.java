@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class UserLogic {
 
-    private enum USER_STATE {MEMBER, LIBRARIAN, NOT_LOGGED_IN};
+    public enum USER_STATE {MEMBER, LIBRARIAN, NOT_LOGGED_IN}
 
     private ArrayList<Account> users;
     private Account loggedIn;
@@ -19,6 +19,7 @@ public class UserLogic {
     public UserLogic() {
         users = new ArrayList<>();
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
+        users.add(new Librarian("1234", "Rasmus Nilsson", "Storgatan", "079349", "rani_lib", "dogs"));
     }
 
     public boolean editUser(String ssn) {

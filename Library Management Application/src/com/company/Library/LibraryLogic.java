@@ -71,8 +71,22 @@ public class LibraryLogic {
         return result;
     }
 
-    public void addBook(Book book) {
-        inventory.add(book);
+    public boolean addBook(Book book) {
+        // Check for books with the same isbn
+        for (Book b : inventory) {
+            if (b.getIsbn().equals(book.getIsbn())) {
+                return false;
+            }
+        }
+
+        System.out.println(book);
+        int confirm = Util.safeIntInput("Is this information correct?\n1) Yes 2) No\n", 2);
+        if (confirm == 1) {
+            inventory.add(book);
+            return true;
+        }
+
+        return false;
     }
 
     public boolean removeBook(String isbn) {
