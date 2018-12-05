@@ -2,14 +2,11 @@ package com.company.OptionAction;
 
 import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
-import com.company.Library.Transaction;
-import com.company.Users.Account;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
 
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.Scanner;
 
 public class MenuHandler {
@@ -66,6 +63,7 @@ public class MenuHandler {
                 System.out.println("No user was found.");
             }
         };
+
         Runnable removeMemberAction = () -> {
             String ssn = Util.safeStringInput("SSN of member to remove");
             if (userLogic.removeUser(ssn)) {
@@ -95,6 +93,13 @@ public class MenuHandler {
             } else {
                 System.out.println("Username and/or password was incorrect.");
             }
+        };
+
+        Runnable editBookAction = () -> {
+            String isbn = Util.safeStringInput("ISBN number of book to edit");
+            if (!libraryLogic.editBook(isbn)) {
+                System.out.println("Sorry, no book was found.");
+            } else System.out.println("\n\nYour book has now been edited. Thank you!\n");
         };
 
         Runnable addBookInformationAction = () -> {
@@ -140,15 +145,21 @@ public class MenuHandler {
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editUserAction);
         Option removeMember = new Option("Remove Member", removeMemberAction);
+
         Option issueBook = new Option("Loan", issueBookAction);
         Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
         Option login = new Option("Log in", loginAction);
+
+        Option editBook = new Option ("Edit book", editBookAction);
+
 
         Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
         Option searchBook = new Option("Search Book", searchBookAction);
         Option removeBook = new Option("Remove Book", removeBookAction);
 
         testMenu = new Menu(addMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login);
+        testMenu = new Menu(addMember, viewMember, editMember, removeMember, addBookInformation, searchBook, removeBook, editBook);
+
         setActiveMenu(testMenu);
     }
 

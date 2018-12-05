@@ -4,10 +4,8 @@ import com.company.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class LibraryLogic {
-    Scanner input = new Scanner(System.in);
 
     private ArrayList<Book> inventory;
 
@@ -54,6 +52,7 @@ public class LibraryLogic {
             String[] subAuthors = new String[current.getAuthors().length];
             boolean authorMatch = false;
             for (int j = 0; j < current.getAuthors().length; j++) {
+
                 if (current.getAuthors()[j].length() >= query.length()) {
                     subAuthors[j] = current.getAuthors()[j].substring(0, query.length()).toLowerCase();
                     if (subAuthors[j].equals(query)) {
@@ -92,7 +91,7 @@ public class LibraryLogic {
     public boolean removeBook(String isbn) {
         boolean successful = false;
         for (int i = 0; i < inventory.size(); i++) {
-            if (isbn.equals(inventory.get(i).getisbn())) {
+            if (isbn.equals(inventory.get(i).getIsbn())) {
                 // Make sure user wants to delete this book by displaying title
                 String prompt = "Do you really want to delete '" + inventory.get(i).getTitle() + "'?\n1) Yes 2) No\n";
                 int answer = Util.safeIntInput(prompt, 2);
@@ -109,6 +108,7 @@ public class LibraryLogic {
         return successful;
     }
 
+
     public Book getBook (String isbn) {
         for (Book book : inventory) {
             if (book.getIsbn().equals(isbn)) {
@@ -118,5 +118,38 @@ public class LibraryLogic {
 
         return null; // no book was found
     }
+
+    public boolean editBook(String isbn) {
+        if (getBook(isbn) != null) {
+            Book bookToEdit = (Book) getBook(isbn);
+
+            String tmpIsbn = Util.safeStringInput("ISBN number", bookToEdit.getIsbn());
+            bookToEdit.setIsbn(tmpIsbn);
+            String tmpTitle = Util.safeStringInput("Title", bookToEdit.getTitle());
+            bookToEdit.setTitle(tmpTitle);
+            String authors[] = bookToEdit.getAuthors();
+
+            for (int i = 0; i < authors.length; i++) {
+
+                authors[i] = Util.safeStringInput("Author" + (i + 1), authors[i]);
+            }
+
+            int tmpNUmberOfPages = Util.safeIntInputWithStandard("Number of pages to edit", bookToEdit.getNumberOfPages());
+            bookToEdit.setNumberOfPages(tmpNUmberOfPages);
+            String tmpLanguage = Util.safeStringInput("Language to edit", bookToEdit.getLanguage());
+            bookToEdit.setLanguage(tmpLanguage);
+
+            String tmpPublisher = Util.safeStringInput("Publisher to edit", bookToEdit.getPublisher());
+            bookToEdit.setPublisher(tmpPublisher);
+
+            return true;
+
+        } else return false;
+
+
+    }
+
+
 }
+
 

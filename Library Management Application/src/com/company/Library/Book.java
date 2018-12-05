@@ -34,9 +34,44 @@ public class Book {
         return publisher;
     }
 
+
     public String getisbn() {
         return isbn;
     }
+
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthors(String[] authors) {
+        this.authors = authors;
+    }
+
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder authorsString = new StringBuilder();

@@ -1,13 +1,10 @@
 package com.company.Users;
 
 import com.company.Library.Book;
-import com.company.Library.LibraryLogic;
 import com.company.Library.Transaction;
 import com.company.Util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class UserLogic {
 
@@ -41,6 +38,7 @@ public class UserLogic {
         } else {
             return false;
         }
+
     }
 
     public Account getUser(String ssn) {
