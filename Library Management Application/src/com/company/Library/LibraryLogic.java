@@ -95,5 +95,15 @@ public class LibraryLogic {
         }
         return successful;
     }
+
+    public Book getBook (String isbn) {
+        for (Book book : inventory) {
+            if (book.getIsbn().equals(isbn)) {
+                return book;
+            }
+        }
+
+        return null; // no book was found
+    }
 }
 

@@ -2,10 +2,13 @@ package com.company.OptionAction;
 
 import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
+import com.company.Library.Transaction;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenuHandler {
@@ -78,6 +81,22 @@ public class MenuHandler {
                 System.out.println("Successfully removed member.");
             } else {
                 System.out.println("No member was removed.");
+            }
+        };
+        Runnable issueBookAction = () -> {
+            String isbn = Util.safeStringInput("ISBN of book");
+            Book book = libraryLogic.getBook(isbn);
+            if (book != null) {
+                int confirm = Util.safeIntInput("Is '" + book.getTitle() + "' the correct book?\n1) Yes 2) No", 2);
+                if (confirm == 1) {
+                    Date transactionDate = new Date();
+                    Calendar tmp = Calendar.getInstance();
+                    tmp.setTime(transactionDate);
+                    tmp.add(Calendar.MONTH, 1);
+                    Date dueDate = tmp.getTime();
+                    Transaction transaction = new Transaction(isbn, transactionDate, dueDate);
+                    userLogic.makeTransaction(transaction);
+                }
             }
         };
 

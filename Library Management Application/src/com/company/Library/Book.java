@@ -35,6 +35,9 @@ public class Book {
         return publisher;
     }
 
+    public String getisbn() {
+        return isbn;
+    }
     @Override
     public String toString() {
         StringBuilder authorsString = new StringBuilder();
@@ -53,9 +56,6 @@ public class Book {
         result += isbn + "\n";
         result += "***************************\n";
         return result;
-    }
-    public String getisbn() {
-        return isbn;
     }
 
 }

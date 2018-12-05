@@ -1,5 +1,6 @@
 package com.company.Users;
 
+import com.company.Library.Transaction;
 import com.company.Util;
 
 import java.util.ArrayList;
@@ -80,5 +81,11 @@ public class UserLogic {
             }
         }
         return successful;
+    }
+
+    public void makeTransaction (Transaction transaction) {
+        if (loggedIn instanceof Member) {
+            ((Member) loggedIn).addTransaction(transaction);
+        }
     }
 }
