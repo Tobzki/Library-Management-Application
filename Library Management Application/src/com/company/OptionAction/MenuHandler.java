@@ -71,6 +71,7 @@ public class MenuHandler {
             if (userLogic.editUser(ssn) == null) {
                 System.out.println("Sorry, no user was found.");
             }
+
         }; // Option edit a member based on SSN.
         Runnable removeMemberAction = () -> {
             String ssn = Util.safeStringInput("SSN of member to remove");
@@ -79,6 +80,13 @@ public class MenuHandler {
             } else {
                 System.out.println("No member was removed.");
             }
+        };
+
+        Runnable editBookAction = () -> {
+            String isbn = Util.safeStringInput("ISBN number of book to edit");
+            if (!libraryLogic.editBook(isbn)) {
+                System.out.println("Sorry, no book was found.");
+            } else System.out.println("\n\nYour book has now been edited. Thank you!\n");
         };
 
         Runnable addBookInformationAction = () -> {
@@ -132,12 +140,13 @@ public class MenuHandler {
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
         Option removeMember = new Option("Remove Member", removeMemberAction);
+        Option editBook = new Option ("Edit book", editBookAction);
 
         Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
         Option searchBook = new Option("Search Book", searchBookAction);
         Option removeBook = new Option("Remove Book", removeBookAction);
 
-        testMenu = new Menu(addMember, viewMember, editMember, removeMember, addBookInformation, searchBook, removeBook);
+        testMenu = new Menu(addMember, viewMember, editMember, removeMember, addBookInformation, searchBook, removeBook, editBook);
         setActiveMenu(testMenu);
     }
 

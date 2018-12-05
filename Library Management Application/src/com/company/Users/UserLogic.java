@@ -1,5 +1,6 @@
 package com.company.Users;
 
+import com.company.Library.LibraryLogic;
 import com.company.Util;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class UserLogic {
         } else {
             return getUser(ssn); // should just be null, since there's no user with that ssn
         }
+
     }
 
     public Account getUser(String ssn) {

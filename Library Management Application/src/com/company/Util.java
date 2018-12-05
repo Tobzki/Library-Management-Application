@@ -53,6 +53,30 @@ public class Util {
         return result;
     }
 
+    public static int safeIntInputWithStandard(String prompt, int standard) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("(" + standard + ")" + prompt + "(-1 to keep existing value) >> ");
+        int result = -2;
+        do {
+            if (result == -3) {
+                System.out.print(prompt + " >> ");
+            }
+            try {
+                result = input.nextInt();
+                if (result == -1) {
+                    result = standard;
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Enter a valid input.");
+                input.nextLine();
+                result = -3;
+            }
+        } while (result == -3);
+
+        return result;
+    }
+
     public static String safeStringInput(String prompt) {
         Scanner input = new Scanner(System.in);
         System.out.print(prompt + " >> ");
