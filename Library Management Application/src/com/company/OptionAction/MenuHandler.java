@@ -99,6 +99,16 @@ public class MenuHandler {
                 }
             }
         };
+        Runnable loginAction = () -> {
+            String username = Util.safeStringInput("Username");
+            String password = Util.safeStringInput("Password");
+
+            if (userLogic.authenticate(username, password)) {
+                System.out.println("Successfully logged in.");
+            } else {
+                System.out.println("Username and/or password was incorrect.");
+            }
+        };
 
         Runnable addBookInformationAction = () -> {
 
@@ -151,12 +161,15 @@ public class MenuHandler {
         Option addMember = new Option("Add Member", addMemberAction);
         Option editMember = new Option("Edit Member", editMemberAction);
         Option removeMember = new Option("Remove Member", removeMemberAction);
+        Option issueBook = new Option("Loan", issueBookAction);
+        Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
+        Option login = new Option("Log in", loginAction);
 
         Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
         Option searchBook = new Option("Search Book", searchBookAction);
         Option removeBook = new Option("Remove Book", removeBookAction);
 
-        testMenu = new Menu(addMember, viewMember, editMember, removeMember, addBookInformation, searchBook, removeBook);
+        testMenu = new Menu(addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login);
         setActiveMenu(testMenu);
     }
 

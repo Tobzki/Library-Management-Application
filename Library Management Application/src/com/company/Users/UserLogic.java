@@ -1,5 +1,6 @@
 package com.company.Users;
 
+import com.company.Library.LibraryLogic;
 import com.company.Library.Transaction;
 import com.company.Util;
 
@@ -7,11 +8,14 @@ import java.util.ArrayList;
 
 public class UserLogic {
 
+    private enum USER_STATE {MEMBER, LIBRARIAN, NOT_LOGGED_IN};
+
     private ArrayList<Account> users;
     private Account loggedIn;
 
     public UserLogic() {
         users = new ArrayList<>();
+        users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
     }
 
     public Account editUser(String ssn) {
@@ -83,9 +87,39 @@ public class UserLogic {
         return successful;
     }
 
+    public boolean authenticate (String username, String password) {
+        for (Account user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                loggedIn = user;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public USER_STATE authorize () {
+        if (loggedIn instanceof Librarian) {
+            return USER_STATE.LIBRARIAN;
+        } else if (loggedIn instanceof Member) {
+            return USER_STATE.MEMBER;
+        } else {
+            return USER_STATE.NOT_LOGGED_IN;
+        }
+    }
+
     public void makeTransaction (Transaction transaction) {
         if (loggedIn instanceof Member) {
             ((Member) loggedIn).addTransaction(transaction);
         }
     }
+
+    public void viewTransactions () {
+        if (authorize() == USER_STATE.MEMBER) {
+            for (Transaction transaction : ((Member) loggedIn).getTransactions()) {
+                System.out.println(transaction);
+            }
+        }
+    }
+
 }

@@ -33,6 +33,10 @@ public abstract class Account {
         return telephone;
     }
 
+    public String getUsername () {
+        return username;
+    }
+
     public String getPassword() {
         return password;
     }

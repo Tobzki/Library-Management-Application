@@ -19,4 +19,15 @@ public class Transaction {
         this.dueDate = dueDate;
     }
 
+    @Override
+    public String toString () {
+        String result;
+        result = "***************************\n";
+        result += "Transaction id: " + transactionId + "\n";
+        result += "Date of load: " + dateOfIssue.toString() + "\n";
+        result += "Book loaned: " + bookId + "\n";
+        result += "Due date: " + dueDate.toString() + "\n";
+        result += "***************************\n";
+        return result;
+    }
 }
