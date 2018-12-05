@@ -18,7 +18,7 @@ public class UserLogic {
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
     }
 
-    public Account editUser(String ssn) {
+    public boolean editUser(String ssn) {
         if (getUser(ssn) != null) {
             Member memberToEdit = (Member) getUser(ssn);
             String tmpName = Util.safeStringInput("Name", memberToEdit.getName());
@@ -33,9 +33,9 @@ public class UserLogic {
             String tmpPassword = Util.safeStringInput("Password", memberToEdit.getPassword());
             memberToEdit.setPassword(tmpPassword);
 
-            return memberToEdit;
+            return true;
         } else {
-            return getUser(ssn); // should just be null, since there's no user with that ssn
+            return false;
         }
     }
 
@@ -58,13 +58,19 @@ public class UserLogic {
 
     public boolean addMember(Member member) {
         for (Account mem : users) {
-            if (mem.getSsn().equals(member.getSsn())) {
+            if (mem.getSsn().equals(member.getSsn()) || mem.getUsername().equals(member.getUsername())) {
                 return false;
             }
         }
 
-        users.add(member);
-        return true;
+        System.out.println(member);
+        int validation = Util.safeIntInput("Is this information correct?\n1) Yes 2) No\n", 2);
+        if (validation == 1) {
+            users.add(member);
+            return true;
+        }
+
+        return false;
     }
 
     public boolean removeUser(String ssn) {

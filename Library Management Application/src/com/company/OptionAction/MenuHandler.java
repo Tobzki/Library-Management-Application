@@ -3,6 +3,7 @@ package com.company.OptionAction;
 import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
 import com.company.Library.Transaction;
+import com.company.Users.Account;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
@@ -43,38 +44,27 @@ public class MenuHandler {
 
     private void init() {
         Runnable addMemberAction = () -> {
-            int answer;
-            do {
-                String ssn = Util.safeStringInput("SSN");
-                String name = Util.safeStringInput("Name");
-                String address = Util.safeStringInput("Address");
-                String telePhoneNumber = Util.safeStringInput("Telephonenumber");
-                String userName = Util.safeStringInput("Username");
-                String password = Util.safeStringInput("Password");
+            String ssn = Util.safeStringInput("SSN");
+            String name = Util.safeStringInput("Name");
+            String address = Util.safeStringInput("Address");
+            String telephone = Util.safeStringInput("Telephone number");
+            String username = Util.safeStringInput("Username");
+            String password = Util.safeStringInput("Password");
 
-                System.out.print("\n- - - This is your information below - - -");
-                System.out.printf("\n\nSSN: %s%nName: %s%nAddress: %s%nTelephonenumber: %s%nUsername: %s%nPassword: %s%n", ssn, name, address, telePhoneNumber, userName, password);
-                answer = Util.safeIntInput("\n\nIs this information valid? Press 1 for Yes and 2 for No.");
-                if (answer == 1) {
-
-                    System.out.println("You are now registered in our system '" + name + "'. Thanks for your contribution!");
-                    Member member = new Member(ssn, name, address, telePhoneNumber, userName, password);
-                    if (userLogic.addMember(member)) {
-                        System.out.println("Member added!");
-                    } else {
-                        System.out.println("That SSN is already registered.");
-                    }
-                } else if (answer == 2) {
-                    System.out.println("\n\nPlease be more accurate with your information.\n\n");
-                }
-            } while (answer != 1);
-        }; // Option addMember
-        Runnable editMemberAction = () -> {
-            String ssn = Util.safeStringInput("SSN of user to edit");
-            if (userLogic.editUser(ssn) == null) {
-                System.out.println("Sorry, no user was found.");
+            if (userLogic.addMember(new Member(ssn, name, address, telephone, username, password))) {
+                System.out.println("Member was added.");
+            } else {
+                System.out.println("Something went wrong, maybe the user is already in the system?");
             }
-        }; // Option edit a member based on SSN.
+        }; // Option addMemberN.
+        Runnable editUserAction = () -> {
+            String ssn = Util.safeStringInput("SSN of user to edit");
+            if (userLogic.editUser(ssn)) {
+                System.out.println("Yes boi");
+            } else {
+                System.out.println("No boi");
+            }
+        };
         Runnable removeMemberAction = () -> {
             String ssn = Util.safeStringInput("SSN of member to remove");
             if (userLogic.removeUser(ssn)) {
@@ -159,7 +149,7 @@ public class MenuHandler {
 
         Option viewMember = new Option("View Member", userLogic::viewMembers);
         Option addMember = new Option("Add Member", addMemberAction);
-        Option editMember = new Option("Edit Member", editMemberAction);
+        Option editMember = new Option("Edit Member", editUserAction);
         Option removeMember = new Option("Remove Member", removeMemberAction);
         Option issueBook = new Option("Loan", issueBookAction);
         Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
@@ -169,7 +159,7 @@ public class MenuHandler {
         Option searchBook = new Option("Search Book", searchBookAction);
         Option removeBook = new Option("Remove Book", removeBookAction);
 
-        testMenu = new Menu(addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login);
+        testMenu = new Menu(addMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login);
         setActiveMenu(testMenu);
     }
 
