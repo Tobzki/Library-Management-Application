@@ -87,7 +87,9 @@ public class Book {
             }
         }
         result += authorsString.toString() + "\n";
-        result += isbn + "\n";
+        result += "ISBN: " + isbn + "\n";
+        result += "Pages: " + numberOfPages + "\n";
+        result += "Publisher: " + publisher + "\n";
         result += "***************************\n";
         return result;
     }

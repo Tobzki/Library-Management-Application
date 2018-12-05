@@ -70,6 +70,8 @@ public abstract class Account {
         String result;
         result = "***************************\n";
         result += "Name: " + name + "\nSSN: " + ssn + "\nPhonenumber: " + telephone;
+        result += "Address: " + address + "\n";
+        result += "Username: " + username;
         result += "\n***************************\n";
         return result;
     }

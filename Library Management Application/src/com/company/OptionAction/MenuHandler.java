@@ -158,7 +158,6 @@ public class MenuHandler {
         Option removeBook = new Option("Remove Book", removeBookAction);
 
         testMenu = new Menu(addMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login);
-        testMenu = new Menu(addMember, viewMember, editMember, removeMember, addBookInformation, searchBook, removeBook, editBook);
 
         setActiveMenu(testMenu);
     }

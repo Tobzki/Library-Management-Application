@@ -16,6 +16,7 @@ public class LibraryLogic {
 
     public LibraryLogic() {
         inventory = new ArrayList<>();
+        inventory.add(new Book("978-0-201-6162-4", "The Pracmatic Programmer", 321, "English", "Addison-Wesley", "Andrew Hunt", "David Thomas"));
     }
 
     /**
