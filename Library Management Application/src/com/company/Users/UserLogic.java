@@ -22,6 +22,7 @@ public class UserLogic {
     public boolean editUser(String ssn) {
         if (getUser(ssn) != null) {
             Member memberToEdit = (Member) getUser(ssn);
+
             String tmpName = Util.safeStringInput("Name", memberToEdit.getName());
             memberToEdit.setName(tmpName);
 
@@ -137,6 +138,10 @@ public class UserLogic {
         } else {
             System.out.println("No user is logged in.");
         }
+    }
+
+    public Account getLoggedIn () {
+        return loggedIn;
     }
 
 }

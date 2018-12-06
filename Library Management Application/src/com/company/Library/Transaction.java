@@ -31,6 +31,18 @@ public class Transaction {
         this.dueDate = temp.getTime();
     }
 
+    public int getTransactionId () {
+        return transactionId;
+    }
+
+    public Date getDueDate () {
+        return dueDate;
+    }
+
+    public void setDueDate (Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
     @Override
     public String toString () {
         String result;

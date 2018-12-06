@@ -96,6 +96,16 @@ public class MenuHandler {
             }
         });
         Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
+        Option renewTransaction = new Option("Renew Transaction", () -> {
+            if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
+                int index = Util.safeIntInput("Transaction id");
+                if (((Member)userLogic.getLoggedIn()).renewTransaction(index)) {
+                    System.out.println("Transaction was renewed.");
+                } else {
+                    System.out.println("Incorrect transaction id or transaction passed due date already.");
+                }
+            }
+        });
 
         // Options about books
         Option editBook = new Option ("Edit book", () -> {
@@ -147,7 +157,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging features
-        testMenu = new Menu(addMember, viewMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login);
+        testMenu = new Menu(renewTransaction, addMember, viewMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login);
         setActiveMenu(testMenu);
     }
 
