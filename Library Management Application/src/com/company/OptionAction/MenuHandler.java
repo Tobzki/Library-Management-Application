@@ -109,6 +109,7 @@ public class MenuHandler {
                 String publisher = Util.safeStringInput("Publisher");
                 String language = Util.safeStringInput("Language");
                 int numberOfPages = Util.safeIntInput("Number of pages");
+                String category = Util.safeStringInput("Category");
 
                 int numberOfAuthors = Util.safeIntInput("Number of authors");
                 String[] authors = new String[numberOfAuthors];
@@ -116,7 +117,7 @@ public class MenuHandler {
                     authors[i] = Util.safeStringInput("Name of author #" + (i + 1));
                 }
 
-                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, authors))) {
+                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, authors, category))) {
                     System.out.println("Book was added.");
                 } else {
                     System.out.println("Something went wrong, maybe the book is already in the system?");

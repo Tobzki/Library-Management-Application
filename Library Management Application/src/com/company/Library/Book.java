@@ -8,14 +8,16 @@ public class Book {
     private int numberOfPages;
     private String language;
     private String publisher;
+    private String category;
 
-    public Book(String isbn, String title, int numberOfPages, String language, String publisher, String... authors) {
+    public Book(String isbn, String title, int numberOfPages, String language, String publisher, String category,String... authors) {
         this.isbn = isbn;
         this.title = title;
         this.authors = authors;
         this.numberOfPages = numberOfPages;
         this.language = language;
         this.publisher = publisher;
+        this.category = category;
     }
 
     public String getTitle() {
@@ -34,9 +36,8 @@ public class Book {
         return publisher;
     }
 
-
-    public String getisbn() {
-        return isbn;
+    public String getCategory() {
+        return category;
     }
 
     public int getNumberOfPages() {
@@ -71,6 +72,10 @@ public class Book {
         this.publisher = publisher;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
 
     @Override
     public String toString() {
@@ -90,6 +95,7 @@ public class Book {
         result += "ISBN: " + isbn + "\n";
         result += "Pages: " + numberOfPages + "\n";
         result += "Publisher: " + publisher + "\n";
+        result += "Category: " + category + "\n";
         result += "***************************\n";
         return result;
     }
