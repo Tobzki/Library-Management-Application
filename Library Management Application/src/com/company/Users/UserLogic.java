@@ -52,13 +52,6 @@ public class UserLogic {
         return null; // didn't find any members, don't return anything.
     }
 
-    public void viewMembers() {
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println(i + 1 + ". " + users.get(i));
-        }
-
-    }
-
     public boolean addMember(Member member) {
         for (Account mem : users) {
             if (mem.getSsn().equals(member.getSsn()) || mem.getUsername().equals(member.getUsername())) {
@@ -142,6 +135,17 @@ public class UserLogic {
 
     public Account getLoggedIn () {
         return loggedIn;
+    }
+
+    public void viewListMembers () {
+
+        if (authorize() == USER_STATE.LIBRARIAN) {
+
+            for (int i = 0; i < users.size(); i++) {
+                System.out.println(i + 1 + ". " + users.get(i));}
+        } else {
+            System.out.println("\nYou are not permitted to do this action.\n");
+        }
     }
 
 }
