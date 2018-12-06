@@ -40,8 +40,9 @@ public class MenuHandler {
     }
 
     private void init() {
-        // Option action for add member
-        Runnable addMemberAction = () -> {
+        // Options about members
+        Option viewMember = new Option("View Member", userLogic::viewMembers);
+        Option addMember = new Option("Add Member", () -> {
             String ssn = Util.safeStringInput("SSN");
             String name = Util.safeStringInput("Name");
             String address = Util.safeStringInput("Address");
@@ -54,25 +55,35 @@ public class MenuHandler {
             } else {
                 System.out.println("Something went wrong, maybe the user is already in the system?");
             }
-        };
-        Runnable editUserAction = () -> {
+        });
+        Option editMember = new Option("Edit Member", () -> {
             String ssn = Util.safeStringInput("SSN of user to edit");
             if (userLogic.editUser(ssn)) {
                 System.out.println("User was edited.");
             } else {
                 System.out.println("No user was found.");
             }
-        };
-
-        Runnable removeMemberAction = () -> {
-            String ssn = Util.safeStringInput("SSN of member to remove");
+        });
+        Option removeMember = new Option("Remove Member", () -> {String ssn = Util.safeStringInput("SSN of member to remove");
             if (userLogic.removeUser(ssn)) {
                 System.out.println("Successfully removed member.");
             } else {
                 System.out.println("No member was removed.");
             }
-        };
-        Runnable issueBookAction = () -> {
+        });
+        Option login = new Option("Log in", () -> {
+            String username = Util.safeStringInput("Username");
+            String password = Util.safeStringInput("Password");
+
+            if (userLogic.authenticate(username, password)) {
+                System.out.println("Successfully logged in.");
+            } else {
+                System.out.println("Username and/or password was incorrect.");
+            }
+        });
+
+        // Options about loaning
+        Option issueBook = new Option("Loan", () -> {
             String isbn = Util.safeStringInput("ISBN of book");
             Book book = libraryLogic.getBook(isbn);
             if (book != null) {
@@ -83,26 +94,19 @@ public class MenuHandler {
             } else {
                 System.out.println("No book was found with that ISBN.");
             }
-        };
-        Runnable loginAction = () -> {
-            String username = Util.safeStringInput("Username");
-            String password = Util.safeStringInput("Password");
+        });
+        Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
 
-            if (userLogic.authenticate(username, password)) {
-                System.out.println("Successfully logged in.");
-            } else {
-                System.out.println("Username and/or password was incorrect.");
-            }
-        };
-
-        Runnable editBookAction = () -> {
+        // Options about books
+        Option editBook = new Option ("Edit book", () -> {
             String isbn = Util.safeStringInput("ISBN number of book to edit");
             if (!libraryLogic.editBook(isbn)) {
                 System.out.println("Sorry, no book was found.");
-            } else System.out.println("\n\nYour book has now been edited. Thank you!\n");
-        };
-
-        Runnable addBookInformationAction = () -> {
+            } else {
+                System.out.println("\n\nYour book has now been edited. Thank you!\n");
+            }
+        });
+        Option addBookInformation = new Option("Add Book Information", () -> {
             if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
                 String isbn = Util.safeStringInput("ISBN");
                 String title = Util.safeStringInput("Name");
@@ -117,7 +121,7 @@ public class MenuHandler {
                     authors[i] = Util.safeStringInput("Name of author #" + (i + 1));
                 }
 
-                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, authors, category))) {
+                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, category,authors))) {
                     System.out.println("Book was added.");
                 } else {
                     System.out.println("Something went wrong, maybe the book is already in the system?");
@@ -125,41 +129,25 @@ public class MenuHandler {
             } else {
                 System.out.println("You are not authorized to do this.");
             }
-        }; // Option add book
-        Runnable searchBookAction = () -> {
+        });
+        Option searchBook = new Option("Search Book", () -> {
             String query = Util.safeStringInput("Search query");
 
             for (Book book : libraryLogic.searchBook(query)) {
                 System.out.println(book);
             }
-        }; // Option search book
-        Runnable removeBookAction = () -> {
+        });
+        Option removeBook = new Option("Remove Book", () -> {
             String isbn = Util.safeStringInput("ISBN of book to remove");
             if (libraryLogic.removeBook(isbn)) {
                 System.out.println("Book was successfully removed.");
             } else {
                 System.out.println("No book was removed.");
             }
-        };
+        });
 
-        Option viewMember = new Option("View Member", userLogic::viewMembers);
-        Option addMember = new Option("Add Member", addMemberAction);
-        Option editMember = new Option("Edit Member", editUserAction);
-        Option removeMember = new Option("Remove Member", removeMemberAction);
-
-        Option issueBook = new Option("Loan", issueBookAction);
-        Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
-        Option login = new Option("Log in", loginAction);
-
-        Option editBook = new Option ("Edit book", editBookAction);
-
-
-        Option addBookInformation = new Option("Add Book Information", addBookInformationAction);
-        Option searchBook = new Option("Search Book", searchBookAction);
-        Option removeBook = new Option("Remove Book", removeBookAction);
-
+        // DEBUG: Test menu for debugging features
         testMenu = new Menu(addMember, viewMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login);
-
         setActiveMenu(testMenu);
     }
 
