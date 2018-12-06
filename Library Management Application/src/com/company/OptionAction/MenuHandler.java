@@ -88,8 +88,8 @@ public class MenuHandler {
             Book book = libraryLogic.getBook(isbn);
             if (book != null) {
                 int confirm = Util.safeIntInput("Is '" + book.getTitle() + "' the correct book?\n1) Yes 2) No", 2);
-                if (confirm == 1) {
-                    userLogic.makeTransaction(book);
+                if (confirm == 1 && userLogic.makeTransaction(book)) {
+                    System.out.println("You have loaned '" + book.getTitle() + "'");
                 }
             } else {
                 System.out.println("No book was found with that ISBN.");

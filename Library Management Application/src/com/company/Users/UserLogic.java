@@ -117,13 +117,15 @@ public class UserLogic {
         }
     }
 
-    public void makeTransaction (Book book) {
-        if (authorize() == USER_STATE.MEMBER) {
+    public boolean makeTransaction (Book book) {
+        if (authorize() == USER_STATE.MEMBER && book.isAvailable()) {
             Transaction transaction = new Transaction(book.getIsbn());
             ((Member) loggedIn).addTransaction(transaction);
-        } else {
-            System.out.println("No user is logged in.");
+            book.setAvailable(false);
+
+            return true;
         }
+        return false; // either user is not logged in or book is not available
     }
 
     public void viewTransactions () {

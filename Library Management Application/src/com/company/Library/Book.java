@@ -9,6 +9,7 @@ public class Book {
     private String language;
     private String publisher;
     private String category;
+    private boolean available;
 
     public Book(String isbn, String title, int numberOfPages, String language, String publisher, String category,String... authors) {
         this.isbn = isbn;
@@ -18,6 +19,7 @@ public class Book {
         this.language = language;
         this.publisher = publisher;
         this.category = category;
+        available = true;
     }
 
     public String getTitle() {
@@ -48,6 +50,10 @@ public class Book {
         return language;
     }
 
+    public boolean isAvailable () {
+        return available;
+    }
+
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
@@ -74,6 +80,10 @@ public class Book {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
 
