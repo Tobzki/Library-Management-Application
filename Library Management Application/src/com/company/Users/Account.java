@@ -69,7 +69,7 @@ public abstract class Account {
     public String toString() {
         String result;
         result = "***************************\n";
-        result += "Name: " + name + "\nSSN: " + ssn + "\nPhonenumber: " + telephone;
+        result += "Name: " + name + "\nSSN: " + ssn + "\nPhonenumber: " + telephone + "\n";
         result += "Address: " + address + "\n";
         result += "Username: " + username;
         result += "\n***************************\n";

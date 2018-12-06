@@ -41,7 +41,7 @@ public class MenuHandler {
 
     private void init() {
         // Options about members
-        Option viewMember = new Option("View Member", userLogic::viewMembers);
+        Option viewMembers = new Option("View members", userLogic::viewListMembers);
         Option addMember = new Option("Add Member", () -> {
             String ssn = Util.safeStringInput("SSN");
             String name = Util.safeStringInput("Name");
@@ -157,7 +157,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging features
-        testMenu = new Menu(renewTransaction, addMember, viewMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login);
+        testMenu = new Menu(viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login);
         setActiveMenu(testMenu);
     }
 
