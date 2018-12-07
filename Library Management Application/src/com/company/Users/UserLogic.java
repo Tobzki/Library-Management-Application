@@ -161,10 +161,8 @@ public class UserLogic {
     public void printMembersAfterDue() {
 
         for (int i = 0; i < users.size(); i++) {
-
             if (users.get(i) instanceof Member) {
                 if (((Member) users.get(i)).checkLateTransactions()) {
-
                     System.out.println(i + 1 + ". " + users.get(i));
                 }
             }
