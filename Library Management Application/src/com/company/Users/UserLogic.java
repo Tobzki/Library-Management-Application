@@ -149,7 +149,6 @@ public class UserLogic {
     public void viewListMembers() {
 
         if (authorize() == USER_STATE.LIBRARIAN) {
-
             for (int i = 0; i < users.size(); i++) {
                 System.out.println(i + 1 + ". " + users.get(i));
             }
@@ -159,13 +158,17 @@ public class UserLogic {
     }
 
     public void printMembersAfterDue() {
+        if (authorize() == USER_STATE.LIBRARIAN) {
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i) instanceof Member) {
+                    if (((Member) users.get(i)).checkLateTransactions()) {
 
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i) instanceof Member) {
-                if (((Member) users.get(i)).checkLateTransactions()) {
-                    System.out.println(i + 1 + ". " + users.get(i));
+                        System.out.println(i + 1 + ". " + users.get(i));
+                    }
                 }
             }
+        } else {
+            System.out.println("\n\nYou're not permitted to do this.\n\n");
         }
     }
 
