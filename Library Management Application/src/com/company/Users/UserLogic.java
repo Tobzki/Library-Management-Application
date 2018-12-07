@@ -5,6 +5,7 @@ import com.company.Library.Transaction;
 import com.company.Util;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class UserLogic {
 
@@ -17,6 +18,12 @@ public class UserLogic {
         users = new ArrayList<>();
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
         users.add(new Librarian("1234", "Rasmus Nilsson", "Storgatan", "079349", "rani_lib", "dogs"));
+        // DEBUG
+        Transaction debug = new Transaction("978-0-201-6162-4");
+        ((Member) users.get(0)).addTransaction(debug);
+        Calendar tmp = Calendar.getInstance();
+        tmp.roll(Calendar.MONTH, 1);
+        ((Member) users.get(0)).searchTransactionById(1).setDueDate(tmp.getTime());
     }
 
     public boolean editUser(String ssn) {
@@ -89,7 +96,7 @@ public class UserLogic {
         return successful;
     }
 
-    public boolean authenticate (String username, String password) {
+    public boolean authenticate(String username, String password) {
         for (Account user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 loggedIn = user;
@@ -100,7 +107,7 @@ public class UserLogic {
         return false;
     }
 
-    public USER_STATE authorize () {
+    public USER_STATE authorize() {
         if (loggedIn instanceof Librarian) {
             return USER_STATE.LIBRARIAN;
         } else if (loggedIn instanceof Member) {
@@ -110,7 +117,7 @@ public class UserLogic {
         }
     }
 
-    public boolean makeTransaction (Book book) {
+    public boolean makeTransaction(Book book) {
         if (authorize() == USER_STATE.MEMBER && book.isAvailable()) {
             Transaction transaction = new Transaction(book.getIsbn());
             ((Member) loggedIn).addTransaction(transaction);
@@ -121,7 +128,7 @@ public class UserLogic {
         return false; // either user is not logged in or book is not available
     }
 
-    public void viewTransactions () {
+    public void viewTransactions() {
         if (authorize() == USER_STATE.MEMBER) {
             if (((Member) loggedIn).getTransactions().size() > 0) {
                 for (Transaction transaction : ((Member) loggedIn).getTransactions()) {
@@ -135,18 +142,32 @@ public class UserLogic {
         }
     }
 
-    public Account getLoggedIn () {
+    public Account getLoggedIn() {
         return loggedIn;
     }
 
-    public void viewListMembers () {
+    public void viewListMembers() {
 
         if (authorize() == USER_STATE.LIBRARIAN) {
 
             for (int i = 0; i < users.size(); i++) {
-                System.out.println(i + 1 + ". " + users.get(i));}
+                System.out.println(i + 1 + ". " + users.get(i));
+            }
         } else {
             System.out.println("\nYou are not permitted to do this action.\n");
+        }
+    }
+
+    public void printMembersAfterDue() {
+
+        for (int i = 0; i < users.size(); i++) {
+
+            if (users.get(i) instanceof Member) {
+                if (((Member) users.get(i)).checkLateTransactions()) {
+
+                    System.out.println(i + 1 + ". " + users.get(i));
+                }
+            }
         }
     }
 

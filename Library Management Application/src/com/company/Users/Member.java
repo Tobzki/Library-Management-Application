@@ -1,5 +1,6 @@
 package com.company.Users;
 
+import com.company.Library.Book;
 import com.company.Library.Transaction;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.Date;
 
 public class Member extends Account {
 
-    private ArrayList<Transaction> transactions;
+    private ArrayList <Transaction> transactions;
+    Date today = new Date();
 
     public Member(String ssn, String name, String address, String telephone, String username, String password) {
         super(ssn, name, address, telephone, username, password);
@@ -27,7 +29,8 @@ public class Member extends Account {
         return transactions;
     }
 
-    private Transaction searchTransactionById (int id) {
+    // Change back to private after debug
+    public Transaction searchTransactionById (int id) {
         for (Transaction transaction : transactions) {
             if (transaction.getTransactionId() == id) {
                 return transaction;
@@ -52,4 +55,16 @@ public class Member extends Account {
 
         return false;
     }
+
+    public boolean checkLateTransactions () {
+
+        for (int i = 0; i < transactions.size(); i++) {
+
+            if (today.after(transactions.get(i).getDueDate())) {
+
+                return true;
+            }
+        }
+
+    return false;}
 }

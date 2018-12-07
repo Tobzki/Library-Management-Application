@@ -107,6 +107,8 @@ public class MenuHandler {
             }
         });
 
+        Option viewMembersAfterDue = new Option("View members after due", userLogic::printMembersAfterDue);
+
         // Options about books
         Option editBook = new Option ("Edit book", () -> {
             String isbn = Util.safeStringInput("ISBN number of book to edit");
@@ -157,7 +159,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging features
-        testMenu = new Menu(viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login);
+        testMenu = new Menu(viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login, viewMembersAfterDue);
         setActiveMenu(testMenu);
     }
 

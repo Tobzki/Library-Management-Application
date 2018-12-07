@@ -31,6 +31,8 @@ public class Transaction {
         this.dueDate = temp.getTime();
     }
 
+
+
     public int getTransactionId () {
         return transactionId;
     }
