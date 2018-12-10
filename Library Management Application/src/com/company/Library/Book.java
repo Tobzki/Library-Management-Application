@@ -12,6 +12,9 @@ public class Book {
     private boolean available;
 
     public Book(String isbn, String title, int numberOfPages, String language, String publisher, String category,String... authors) {
+    public Book(String isbn, String title, int numberOfPages, String language, String publisher,
+                String... authors, String category) {
+
         this.isbn = isbn;
         this.title = title;
         this.authors = authors;
@@ -87,7 +90,6 @@ public class Book {
     }
 
 
-    @Override
     public String toString() {
         StringBuilder authorsString = new StringBuilder();
         String result;

@@ -17,6 +17,8 @@ public class LibraryLogic {
     public LibraryLogic() {
         inventory = new ArrayList<>();
         inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 321, "English", "Addison-Wesley", "Andrew Hunt", "David Thomas"));
+        inventory.add(new Book("978-0-201-6162-4", "The Pracmatic Programmer", 321, "English", "Addison-Wesley", "Andrew Hunt",
+                "David Thomas,", "Scientific"));
     }
 
     /**
@@ -39,6 +41,7 @@ public class LibraryLogic {
             String subIsbn = "",
                     subTitle = "",
                     subPublisher = "";
+                    subCategory = "";
 
             if (current.getIsbn().length() >= query.length()) {
                 subIsbn = current.getIsbn().substring(0, query.length()).toLowerCase();
@@ -48,6 +51,9 @@ public class LibraryLogic {
             }
             if (current.getPublisher().length() >= query.length()) {
                 subPublisher = current.getPublisher().substring(0, query.length());
+            }
+            if (current.getCategory().length() >= query.length()) {
+                subCategory = current.getCategory().substring(0, query.length());
             }
 
             String[] subAuthors = new String[current.getAuthors().length];
@@ -63,7 +69,8 @@ public class LibraryLogic {
                 }
             }
 
-            if (subIsbn.equals(query) || subTitle.equals(query) || subPublisher.equals(query) || authorMatch) {
+            if (subIsbn.equals(query) || subTitle.equals(query) || subPublisher.equals(query) || authorMatch
+                    || subCategory.equals(query)) {
                 result.add(current);
             }
         }
@@ -143,6 +150,9 @@ public class LibraryLogic {
             String tmpPublisher = Util.safeStringInput("Publisher to edit", bookToEdit.getPublisher());
             bookToEdit.setPublisher(tmpPublisher);
 
+            String tmpCategory = Util.safeStringInput("Category to edit", bookToEdit.getCategory());
+            bookToEdit.setCategory(tmpCategory);
+
             return true;
 
         } else return false;
@@ -150,6 +160,16 @@ public class LibraryLogic {
 
     }
 
+    public Book getCategory (String category) {
+        for (Book category : inventory) {
+            if (book.getCategory().equals(category)) {
+                System.out.println("The categories: " + getCategory);
+
+            }
+            public ArrayList<Category> viewCategory(String categoryQuery) {
+                ArrayList<Category> result = new ArrayList<>();
+                if (categoryQuery.equals("")) {
+                    return result;
 
 }
 
