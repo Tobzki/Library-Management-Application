@@ -18,14 +18,15 @@ public class FileIO {
     }
 
     public static void create (String name) {
-        Path path = Paths.get(FileSystems.getDefault().getPath("Histories/" + name + ".txt").toString());
+        Path parent = Paths.get(FileSystems.getDefault().getPath(".").toString());
         try {
-            if (!Files.exists(path)) {
-                Files.createDirectories(path);
+            if (!Files.exists(parent)) {
+                Files.createDirectories(parent);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Path path = Paths.get(FileSystems.getDefault().getPath("Histories/" + name + ".txt").toString());
         System.out.println(path);
         ArrayList<String> header = new ArrayList<>();
         header.add("******************************");
