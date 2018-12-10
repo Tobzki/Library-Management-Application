@@ -19,6 +19,14 @@ public class FileIO {
 
     public static void create (String name) {
         Path path = Paths.get(FileSystems.getDefault().getPath("Histories/" + name + ".txt").toString());
+        try {
+            if (!Files.exists(path)) {
+                Files.createDirectories(path);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(path);
         ArrayList<String> header = new ArrayList<>();
         header.add("******************************");
         header.add(String.format("History for user: %s", name));

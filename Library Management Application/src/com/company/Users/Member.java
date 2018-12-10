@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Member extends Account {
 
-    private ArrayList <Transaction> transactions;
+    private ArrayList<Transaction> transactions;
     private double fee;
     Date today = new Date();
 
@@ -22,15 +22,15 @@ public class Member extends Account {
         FileIO.create(username); // create a history file for user
     }
 
-    public void addTransaction (Transaction transaction) {
+    public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
     }
 
-    public ArrayList<Transaction> getTransactions () {
+    public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
-    public boolean returnTransaction (int id) {
+    public boolean returnTransaction(int id) {
         Transaction transaction = searchTransactionById(id);
         if (transaction != null) {
             double tempFee = 0.0;
@@ -43,7 +43,7 @@ public class Member extends Account {
             ArrayList<String> history = new ArrayList<>();
             history.add("Transaction id: " + transaction.getTransactionId());
             history.add("Book: " + transaction.getBookId());
-            history.add("Was due: " + transaction.getDueDate() +", returned: " + returnDate);
+            history.add("Was due: " + transaction.getDueDate() + ", returned: " + returnDate);
             history.add("Fee: " + tempFee);
             FileIO.out(getUsername(), history);
             transactions.remove(transaction);
@@ -55,7 +55,7 @@ public class Member extends Account {
     }
 
     // Change back to private after debug
-    public Transaction searchTransactionById (int id) {
+    public Transaction searchTransactionById(int id) {
         for (Transaction transaction : transactions) {
             if (transaction.getTransactionId() == id) {
                 return transaction;
@@ -64,7 +64,7 @@ public class Member extends Account {
         return null; // transaction does not exist
     }
 
-    public boolean renewTransaction (int id) {
+    public boolean renewTransaction(int id) {
         if (searchTransactionById(id) != null) {
             Transaction transaction = searchTransactionById(id);
             Date dueDate = transaction.getDueDate();
@@ -81,15 +81,12 @@ public class Member extends Account {
         return false;
     }
 
-    public boolean checkLateTransactions () {
-
+    public boolean checkLateTransactions() {
         for (int i = 0; i < transactions.size(); i++) {
-
             if (today.after(transactions.get(i).getDueDate())) {
-
                 return true;
             }
         }
-
-    return false;}
+        return false;
+    }
 }
