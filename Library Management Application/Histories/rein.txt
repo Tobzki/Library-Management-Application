@@ -1,0 +1,8 @@
+******************************
+History for user: rein
+******************************
+Transaction id: 2
+Book: 978-1
+Was due: Thu Jan 10 12:54:39 CET 2019, returned: Mon Dec 10 12:55:08 CET 2018
+Fee: 0.0
+******************************
