@@ -18,12 +18,6 @@ public class UserLogic {
         users = new ArrayList<>();
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
         users.add(new Librarian("1234", "Rasmus Nilsson", "Storgatan", "079349", "rani_lib", "dogs"));
-        // DEBUG
-        Transaction debug = new Transaction("978-0-201-6162-4");
-        ((Member) users.get(0)).addTransaction(debug);
-        Calendar tmp = Calendar.getInstance();
-        tmp.roll(Calendar.MONTH, 1);
-        ((Member) users.get(0)).searchTransactionById(1).setDueDate(tmp.getTime());
     }
 
     public boolean editUser(String ssn) {
@@ -126,6 +120,26 @@ public class UserLogic {
             return true;
         }
         return false; // either user is not logged in or book is not available
+    }
+
+    public boolean returnBook (int transactionId) {
+        if (authorize() == USER_STATE.MEMBER && ((Member) loggedIn).returnTransaction(transactionId)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String getTransactionBookId (int transactionId) {
+        if (authorize() == USER_STATE.MEMBER) {
+            Transaction tmp = ((Member) loggedIn).searchTransactionById(transactionId);
+            if (tmp != null) {
+                return tmp.getBookId();
+            } else {
+                return null;
+            }
+        }
+        return null;
     }
 
     public void viewTransactions() {

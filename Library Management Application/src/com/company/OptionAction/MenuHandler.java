@@ -43,17 +43,21 @@ public class MenuHandler {
         // Options about members
         Option viewMembers = new Option("View members", userLogic::viewListMembers);
         Option addMember = new Option("Add Member", () -> {
-            String ssn = Util.safeStringInput("SSN");
-            String name = Util.safeStringInput("Name");
-            String address = Util.safeStringInput("Address");
-            String telephone = Util.safeStringInput("Telephone number");
-            String username = Util.safeStringInput("Username");
-            String password = Util.safeStringInput("Password");
+            if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
+                String ssn = Util.safeStringInput("SSN");
+                String name = Util.safeStringInput("Name");
+                String address = Util.safeStringInput("Address");
+                String telephone = Util.safeStringInput("Telephone number");
+                String username = Util.safeStringInput("Username");
+                String password = Util.safeStringInput("Password");
 
-            if (userLogic.addMember(new Member(ssn, name, address, telephone, username, password))) {
-                System.out.println("Member was added.");
+                if (userLogic.addMember(new Member(ssn, name, address, telephone, username, password))) {
+                    System.out.println("Member was added.");
+                } else {
+                    System.out.println("Something went wrong, maybe the user is already in the system?");
+                }
             } else {
-                System.out.println("Something went wrong, maybe the user is already in the system?");
+                System.out.println("You are not permitted to perform this action.");
             }
         });
         Option editMember = new Option("Edit Member", () -> {
@@ -84,15 +88,19 @@ public class MenuHandler {
 
         // Options about loaning
         Option issueBook = new Option("Loan", () -> {
-            String isbn = Util.safeStringInput("ISBN of book");
-            Book book = libraryLogic.getBook(isbn);
-            if (book != null) {
-                int confirm = Util.safeIntInput("Is '" + book.getTitle() + "' the correct book?\n1) Yes 2) No", 2);
-                if (confirm == 1 && userLogic.makeTransaction(book)) {
-                    System.out.println("You have loaned '" + book.getTitle() + "'");
+            if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
+                String isbn = Util.safeStringInput("ISBN of book");
+                Book book = libraryLogic.getBook(isbn);
+                if (book != null && book.isAvailable()) {
+                    int confirm = Util.safeIntInput("Is '" + book.getTitle() + "' the correct book?\n1) Yes 2) No", 2);
+                    if (confirm == 1 && userLogic.makeTransaction(book)) {
+                        System.out.println("You have loaned '" + book.getTitle() + "'");
+                    }
+                } else {
+                    System.out.println("Something went wrong, the book might not be available at this time.");
                 }
             } else {
-                System.out.println("No book was found with that ISBN.");
+                System.out.println("You are not permitted to perform this action.");
             }
         });
         Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
@@ -104,6 +112,16 @@ public class MenuHandler {
                 } else {
                     System.out.println("Incorrect transaction id or transaction passed due date already.");
                 }
+            }
+        });
+        Option returnBook = new Option("Return book", () -> {
+            int transactionId = Util.safeIntInput("Transaction id:");
+            Book book = libraryLogic.getBook(userLogic.getTransactionBookId(transactionId));
+            if (book != null && userLogic.returnBook(transactionId)) {
+                book.setAvailable(true);
+                System.out.println("Book was returned.");
+            } else {
+                System.out.println("Something went wrong.");
             }
         });
 
@@ -159,7 +177,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging features
-        testMenu = new Menu(viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login, viewMembersAfterDue);
+        testMenu = new Menu(returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login, viewMembersAfterDue);
         setActiveMenu(testMenu);
     }
 

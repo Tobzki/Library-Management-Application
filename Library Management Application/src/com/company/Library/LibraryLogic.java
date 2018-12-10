@@ -16,7 +16,8 @@ public class LibraryLogic {
 
     public LibraryLogic() {
         inventory = new ArrayList<>();
-        inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 321, "English", "Addison-Wesley", "Andrew Hunt", "David Thomas"));
+        inventory.add(new Book("978-1", "The Alchemist", 198, "English", "Bonnier", "Fiction", "Paulo Coelho"));
+        inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 289, "English", "Bonnier", "Education", "Andrew Heist"));
     }
 
     /**
