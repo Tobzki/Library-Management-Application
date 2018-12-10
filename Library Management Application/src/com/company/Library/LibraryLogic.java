@@ -16,9 +16,8 @@ public class LibraryLogic {
 
     public LibraryLogic() {
         inventory = new ArrayList<>();
-        inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 321, "English", "Addison-Wesley", "Andrew Hunt", "David Thomas"));
-        inventory.add(new Book("978-0-201-6162-4", "The Pracmatic Programmer", 321, "English", "Addison-Wesley", "Andrew Hunt",
-                "David Thomas,", "Scientific"));
+        inventory.add(new Book("978-1", "The Alchemist", 198, "English", "Bonnier", "Fiction", "Paulo Coelho"));
+        inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 289, "English", "Bonnier", "Education", "Andrew Heist"));
     }
 
     /**
@@ -40,7 +39,7 @@ public class LibraryLogic {
             Book current = inventory.get(i);
             String subIsbn = "",
                     subTitle = "",
-                    subPublisher = "";
+                    subPublisher = "",
                     subCategory = "";
 
             if (current.getIsbn().length() >= query.length()) {
@@ -159,18 +158,6 @@ public class LibraryLogic {
 
 
     }
-
-    public Book getCategory (String category) {
-        for (Book category : inventory) {
-            if (book.getCategory().equals(category)) {
-                System.out.println("The categories: " + getCategory);
-
-            }
-            public ArrayList<Category> viewCategory(String categoryQuery) {
-                ArrayList<Category> result = new ArrayList<>();
-                if (categoryQuery.equals("")) {
-                    return result;
-
 }
 
 

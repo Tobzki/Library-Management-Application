@@ -9,7 +9,7 @@ public class LibraryApp {
         try {
             menuHandler.runMenu();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

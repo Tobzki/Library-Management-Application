@@ -1,25 +1,26 @@
 package com.company.Users;
 
+import com.company.FileIO;
 import com.company.Library.Book;
 import com.company.Library.Transaction;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Member extends Account {
 
     private ArrayList <Transaction> transactions;
+    private double fee;
     Date today = new Date();
 
     public Member(String ssn, String name, String address, String telephone, String username, String password) {
         super(ssn, name, address, telephone, username, password);
+        fee = 0;
         transactions = new ArrayList<>();
+        FileIO.create(username); // create a history file for user
     }
-
-    /*
-     *   TODO: Add member-specific methods such as 'issueBook', 'getTransactionHistory' etc.
-     */
 
     public void addTransaction (Transaction transaction) {
         transactions.add(transaction);
@@ -27,6 +28,30 @@ public class Member extends Account {
 
     public ArrayList<Transaction> getTransactions () {
         return transactions;
+    }
+
+    public boolean returnTransaction (int id) {
+        Transaction transaction = searchTransactionById(id);
+        if (transaction != null) {
+            double tempFee = 0.0;
+            Date returnDate = new Date();
+            if (transaction.getDueDate().before(returnDate)) { // Book is late
+                long diff = transaction.getDueDate().getTime() - returnDate.getTime();
+                tempFee = 10.0 * Math.abs(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
+                fee += tempFee;
+            }
+            ArrayList<String> history = new ArrayList<>();
+            history.add("Transaction id: " + transaction.getTransactionId());
+            history.add("Book: " + transaction.getBookId());
+            history.add("Was due: " + transaction.getDueDate() +", returned: " + returnDate);
+            history.add("Fee: " + tempFee);
+            FileIO.out(getUsername(), history);
+            transactions.remove(transaction);
+
+            return true;
+        }
+
+        return false;
     }
 
     // Change back to private after debug
