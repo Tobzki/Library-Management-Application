@@ -11,7 +11,7 @@ public class Book {
     private String category;
 
     public Book(String isbn, String title, int numberOfPages, String language, String publisher,
-                String... authors, category) {
+                String... authors, String category) {
         this.isbn = isbn;
         this.title = title;
         this.authors = authors;
