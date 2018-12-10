@@ -12,8 +12,8 @@ public class Book {
     private boolean available;
 
     public Book(String isbn, String title, int numberOfPages, String language, String publisher, String category,String... authors) {
-    public Book(String isbn, String title, int numberOfPages, String language, String publisher,
-                String... authors, String category) {
+
+    {
 
         this.isbn = isbn;
         this.title = title;
@@ -23,7 +23,7 @@ public class Book {
         this.publisher = publisher;
         this.category = category;
         available = true;
-    }
+    } }
 
     public String getTitle() {
         return title;
@@ -112,4 +112,4 @@ public class Book {
         return result;
     }
 
-}
+  }
