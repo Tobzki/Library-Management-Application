@@ -185,7 +185,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging features
-        testMenu = new Menu(returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
+        testMenu = new Menu(printBooksCategory, returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
 
     }
 
