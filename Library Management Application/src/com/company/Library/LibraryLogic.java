@@ -193,8 +193,7 @@ public class LibraryLogic {
 
             if (inventory.get(i).getCategory().equals(categories.get(answer - 1))) {
                 System.out.println(i + 1 + ". " + inventory.get(i));
-
-            }
+            } else System.out.println("No book was found.");
         }
     }
 }
