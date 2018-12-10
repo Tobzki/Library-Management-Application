@@ -6,7 +6,6 @@ import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
 
-
 import java.util.Scanner;
 
 public class MenuHandler {
@@ -14,6 +13,7 @@ public class MenuHandler {
     private Scanner input = new Scanner(System.in);
     private UserLogic userLogic = new UserLogic();
     private LibraryLogic libraryLogic = new LibraryLogic();
+    private Book book;
 
     private Menu activeMenu; // starting point
     private Menu lastMenu; // records what menu was previously visited
@@ -68,7 +68,8 @@ public class MenuHandler {
                 System.out.println("No user was found.");
             }
         });
-        Option removeMember = new Option("Remove Member", () -> {String ssn = Util.safeStringInput("SSN of member to remove");
+        Option removeMember = new Option("Remove Member", () -> {
+            String ssn = Util.safeStringInput("SSN of member to remove");
             if (userLogic.removeUser(ssn)) {
                 System.out.println("Successfully removed member.");
             } else {
@@ -107,7 +108,7 @@ public class MenuHandler {
         Option renewTransaction = new Option("Renew Transaction", () -> {
             if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
                 int index = Util.safeIntInput("Transaction id");
-                if (((Member)userLogic.getLoggedIn()).renewTransaction(index)) {
+                if (((Member) userLogic.getLoggedIn()).renewTransaction(index)) {
                     System.out.println("Transaction was renewed.");
                 } else {
                     System.out.println("Incorrect transaction id or transaction passed due date already.");
@@ -128,7 +129,7 @@ public class MenuHandler {
         Option viewMembersAfterDue = new Option("View members after due", userLogic::printMembersAfterDue);
 
         // Options about books
-        Option editBook = new Option ("Edit book", () -> {
+        Option editBook = new Option("Edit book", () -> {
             String isbn = Util.safeStringInput("ISBN number of book to edit");
             if (!libraryLogic.editBook(isbn)) {
                 System.out.println("Sorry, no book was found.");
@@ -151,7 +152,7 @@ public class MenuHandler {
                     authors[i] = Util.safeStringInput("Name of author #" + (i + 1));
                 }
 
-                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, category,authors))) {
+                if (libraryLogic.addBook(new Book(isbn, title, numberOfPages, language, publisher, category, authors))) {
                     System.out.println("Book was added.");
                 } else {
                     System.out.println("Something went wrong, maybe the book is already in the system?");
@@ -176,9 +177,16 @@ public class MenuHandler {
             }
         });
 
+        Option printBooksCategory = new Option("Print books in category", () -> {
+            libraryLogic.viewCategories();
+            int answer = Util.safeIntInput("Index of category to print");
+            libraryLogic.printCategoryBooks(answer);
+
+        });
+
         // DEBUG: Test menu for debugging features
-        testMenu = new Menu(returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions,login, viewMembersAfterDue);
-        setActiveMenu(testMenu);
+        testMenu = new Menu(returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
+
     }
 
     private void backAction() {

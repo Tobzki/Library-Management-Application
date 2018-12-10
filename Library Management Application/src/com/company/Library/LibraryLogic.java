@@ -8,6 +8,7 @@ import java.util.Arrays;
 public class LibraryLogic {
 
     private ArrayList<Book> inventory;
+    private ArrayList<String> categories = new ArrayList<>();
 
     public LibraryLogic(Book... books) {
         inventory = new ArrayList<>();
@@ -18,6 +19,24 @@ public class LibraryLogic {
         inventory = new ArrayList<>();
         inventory.add(new Book("978-1", "The Alchemist", 198, "English", "Bonnier", "Fiction", "Paulo Coelho"));
         inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 289, "English", "Bonnier", "Education", "Andrew Heist"));
+        inventory.add(new Book("978-0-201-6162-4", "The Pragmatic Programmer", 321, "English", "Addison-Wesley", "Scientific", "David Thomas"));
+        inventory.add(new Book("9789113050805", "Fifty shades darker", 541, "English", "Norstedts", "Romance", "E L James"));
+        inventory.add(new Book("9780261102354", "The Fellowship of the Ring", 576, "English", "Harpercollins", "Fantasy", "J. R. R. Tolkien"));
+        inventory.add(new Book("9780380015399", "The Satanic bible", 272, "English", "Harper Collins USA", "Fantasy", "Anton Szander Lavoy"));
+        inventory.add(new Book("9781405182935", "Metric Pattern Cutting for Menswear", 198, "English", "John Wiley SONS", "Fashion", "Winfried Aldrich"));
+        inventory.add(new Book("9789176570746", "En midsommarnattsdröm - En komedi", 116, "Svenska", "Ordfront Förlag", "Funny", "William Shakespeare"));
+        inventory.add(new Book("9780099576860", "Live and Let Die", 336, "Engelska", "Vintage", "Action", "Ian Fleming"));
+        categories.add("Action");
+        categories.add("Fantasy");
+        categories.add("Fashion");
+        categories.add("Funny");
+        categories.add("Romance");
+        categories.add("Scientific");
+
+    }
+
+    public ArrayList<String> getCategories() {
+        return categories;
     }
 
     /**
@@ -116,7 +135,7 @@ public class LibraryLogic {
     }
 
 
-    public Book getBook (String isbn) {
+    public Book getBook(String isbn) {
         for (Book book : inventory) {
             if (book.getIsbn().equals(isbn)) {
                 return book;
@@ -158,6 +177,27 @@ public class LibraryLogic {
 
 
     }
+
+    public void viewCategories() {
+
+        for (int i = 0; i < categories.size(); i++) {
+
+            System.out.println(i + 1 + ". " + categories.get(i));
+
+        }
+    }
+
+    public void printCategoryBooks(int answer) {
+
+        for (int i = 0; i < inventory.size(); i++) {
+
+            if (inventory.get(i).getCategory().equals(categories.get(answer - 1))) {
+                System.out.println(i + 1 + ". " + inventory.get(i));
+
+            }
+        }
+    }
 }
+
 
 
