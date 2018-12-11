@@ -10,7 +10,7 @@ public class LibraryLogic {
     private ArrayList<Book> inventory;
     private ArrayList<String> categories = new ArrayList<>();
 
-    public LibraryLogic(Book... books) {
+    public LibraryLogic (Book... books) {
         inventory = new ArrayList<>();
         inventory.addAll(Arrays.asList(books));
     }
@@ -197,6 +197,3 @@ public class LibraryLogic {
         }
     }
 }
-
-
-

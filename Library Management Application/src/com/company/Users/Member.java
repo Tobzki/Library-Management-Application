@@ -13,7 +13,6 @@ public class Member extends Account {
 
     private ArrayList<Transaction> transactions;
     private double fee;
-    Date today = new Date();
 
     public Member(String ssn, String name, String address, String telephone, String username, String password) {
         super(ssn, name, address, telephone, username, password);
@@ -82,6 +81,7 @@ public class Member extends Account {
     }
 
     public boolean checkLateTransactions() {
+        Date today = new Date();
         for (int i = 0; i < transactions.size(); i++) {
             if (today.after(transactions.get(i).getDueDate())) {
                 return true;

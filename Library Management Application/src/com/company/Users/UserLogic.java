@@ -181,7 +181,7 @@ public class UserLogic {
                 }
             }
         } else {
-            System.out.println("\n\nYou're not permitted to do this.\n\n");
+            System.out.println("\n\nThere are no members to print.\n\n");
         }
     }
 
