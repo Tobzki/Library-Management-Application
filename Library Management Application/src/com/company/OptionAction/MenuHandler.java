@@ -178,14 +178,14 @@ public class MenuHandler {
 
         Option printBooksCategory = new Option("Print books in category", () -> {
             libraryLogic.viewCategories();
-            int answer = Util.safeIntInput("Index of category to print");
+            int answer = Util.safeIntInput("Index of category to print", libraryLogic.getCategories().size());
             libraryLogic.printCategoryBooks(answer);
 
         });
 
         // DEBUG: Test menu for debugging features
         testMenu = new Menu(printBooksCategory, returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
-
+        setActiveMenu(testMenu);
     }
 
     private void backAction() {
