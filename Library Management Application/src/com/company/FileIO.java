@@ -25,7 +25,11 @@ public class FileIO {
         header.add(String.format("History for user: %s", name));
         header.add("******************************");
         try {
-            Files.write(path, header, StandardOpenOption.CREATE_NEW, StandardOpenOption.TRUNCATE_EXISTING);
+            if (!Files.exists(path)) { // Only write header to it if the file does not exist
+                Files.write(path, header, StandardOpenOption.CREATE);
+            } else {
+                Files.write(path, new ArrayList<>(), StandardOpenOption.APPEND);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
