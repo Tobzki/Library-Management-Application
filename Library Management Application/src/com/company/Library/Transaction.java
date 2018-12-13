@@ -14,7 +14,6 @@ public class Transaction {
 
     public Transaction(String bookId, Date dateOfIssue, Date dueDate) {
         transactionId = ++idCounter;
-
         this.bookId = bookId;
         this.dateOfIssue = dateOfIssue;
         this.dueDate = dueDate;

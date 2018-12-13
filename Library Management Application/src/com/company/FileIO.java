@@ -26,7 +26,7 @@ public class FileIO {
         header.add("******************************");
         try {
             if (!Files.exists(path)) { // Only write header to it if the file does not exist
-                Files.write(path, header, StandardOpenOption.CREATE);
+                Files.write(path, header, StandardOpenOption.CREATE_NEW);
             }
         } catch (IOException e) {
             e.printStackTrace();
