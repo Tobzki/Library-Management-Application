@@ -1,4 +1,4 @@
 # Git ignore these files
 Library Management Application/out/
-Library Management Application/.idea/
+Library Management Application/.idea
 .idea/

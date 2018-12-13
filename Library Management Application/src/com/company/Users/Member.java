@@ -40,7 +40,7 @@ public class Member extends Account {
                 fee += tempFee;
             }
             ArrayList<String> history = new ArrayList<>();
-            history.add("Transaction id: " + transaction.getTransactionId());
+            history.add("Transaction");
             history.add("Book: " + transaction.getBookId());
             history.add("Was due: " + transaction.getDueDate() + ", returned: " + returnDate);
             history.add("Fee: " + tempFee);

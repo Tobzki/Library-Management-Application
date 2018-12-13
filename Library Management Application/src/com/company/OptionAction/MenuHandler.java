@@ -64,7 +64,7 @@ public class MenuHandler {
             if (userLogic.editUser(ssn)) {
                 System.out.println("User was edited.");
             } else {
-                System.out.println("No user was found.");
+                System.out.println("No user was edited (You can only edit members, and make sure to enter the correct SSN).");
             }
         });
         Option removeMember = new Option("Remove Member", () -> {
