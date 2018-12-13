@@ -20,9 +20,8 @@ public class UserLogic {
     }
 
     public boolean editUser(String ssn) {
-        if (getUser(ssn) != null) {
-            Member memberToEdit = (Member) getUser(ssn);
-
+        Account memberToEdit = getUser(ssn);
+        if (getUser(ssn) != null && memberToEdit instanceof Member) {
             String tmpName = Util.safeStringInput("Name", memberToEdit.getName());
             memberToEdit.setName(tmpName);
 
