@@ -13,7 +13,6 @@ public class MenuHandler {
     private Scanner input = new Scanner(System.in);
     private UserLogic userLogic = new UserLogic();
     private LibraryLogic libraryLogic = new LibraryLogic();
-    private Book book;
 
     private Menu activeMenu; // starting point
     private Menu lastMenu; // records what menu was previously visited
@@ -179,13 +178,13 @@ public class MenuHandler {
 
         Option printBooksCategory = new Option("Print books in category", () -> {
             libraryLogic.viewCategories();
-            int answer = Util.safeIntInput("Index of category to print");
+            int answer = Util.safeIntInput("Index of category to print", libraryLogic.getCategories().size());
             libraryLogic.printCategoryBooks(answer);
 
         });
 
-        // DEBUG: Test menu for debugging features
-        testMenu = new Menu(returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
+        // DEBUG: Test menu for debugging feature
+        testMenu = new Menu(printBooksCategory, returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
         setActiveMenu(testMenu);
     }
 

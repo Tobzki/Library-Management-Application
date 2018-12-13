@@ -18,22 +18,16 @@ public class FileIO {
     }
 
     public static void create (String name) {
-        Path parent = Paths.get(FileSystems.getDefault().getPath(".").toString());
-        try {
-            if (!Files.exists(parent)) {
-                Files.createDirectories(parent);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Path path = Paths.get(FileSystems.getDefault().getPath("Histories/" + name + ".txt").toString());
+        Path path = Paths.get(FileSystems.getDefault().getPath("Histories/" + name + ".txt").toAbsolutePath().toString());
         System.out.println(path);
         ArrayList<String> header = new ArrayList<>();
         header.add("******************************");
         header.add(String.format("History for user: %s", name));
         header.add("******************************");
         try {
-            Files.write(path, header, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            if (!Files.exists(path)) { // Only write header to it if the file does not exist
+                Files.write(path, header, StandardOpenOption.CREATE);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

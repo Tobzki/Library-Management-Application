@@ -5,7 +5,6 @@ import com.company.Library.Transaction;
 import com.company.Util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class UserLogic {
 
@@ -182,7 +181,7 @@ public class UserLogic {
                 }
             }
         } else {
-            System.out.println("\n\nYou're not permitted to do this.\n\n");
+            System.out.println("\n\nThere are no members to print.\n\n");
         }
     }
 
