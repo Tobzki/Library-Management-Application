@@ -186,7 +186,7 @@ public class MenuHandler {
 
         // DEBUG: Test menu for debugging features
         testMenu = new Menu(returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
-
+        setActiveMenu(testMenu);
     }
 
     private void backAction() {
