@@ -150,6 +150,11 @@ public class LibraryLogic {
             Book bookToEdit = (Book) getBook(isbn);
 
             String tmpIsbn = Util.safeStringInput("ISBN number", bookToEdit.getIsbn());
+            // Check if this isbn is already taken
+            if (getBook(tmpIsbn) != null) {
+                System.out.println("That ISBN is taken.");
+                return false; // skip the rest of the code
+            }
             bookToEdit.setIsbn(tmpIsbn);
             String tmpTitle = Util.safeStringInput("Title", bookToEdit.getTitle());
             bookToEdit.setTitle(tmpTitle);
