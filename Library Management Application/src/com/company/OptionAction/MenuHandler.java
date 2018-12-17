@@ -131,7 +131,7 @@ public class MenuHandler {
         Option editBook = new Option("Edit book", () -> {
             String isbn = Util.safeStringInput("ISBN number of book to edit");
             if (!libraryLogic.editBook(isbn)) {
-                System.out.println("Sorry, no book was found.");
+                System.out.println("Please try again.");
             } else {
                 System.out.println("\n\nYour book has now been edited. Thank you!\n");
             }
@@ -184,7 +184,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging feature
-        testMenu = new Menu(printBooksCategory, editMember, returnBook, viewMembers, renewTransaction, addMember, removeMember, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
+        testMenu = new Menu(printBooksCategory, editMember, returnBook, viewMembers, renewTransaction, addMember, removeMember, editBook, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
         setActiveMenu(testMenu);
     }
 
