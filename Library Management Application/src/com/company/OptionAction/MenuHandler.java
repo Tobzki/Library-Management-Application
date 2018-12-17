@@ -2,6 +2,7 @@ package com.company.OptionAction;
 
 import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
+import com.company.Users.Account;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
@@ -136,6 +137,25 @@ public class MenuHandler {
                 System.out.println("\n\nYour book has now been edited. Thank you!\n");
             }
         });
+
+        Option viewTransactionHistoryMember = new Option("View transaction history of member", () -> {
+
+            if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
+
+                String ssn = Util.safeStringInput("SSN of member");
+                if (userLogic.getUser(ssn) != null) {
+
+                    userLogic.viewMembersTransactionHistory(userLogic.getUser(ssn).getUsername());
+                } else {
+                    System.out.println("No member was found.");
+                }
+            } else if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
+
+                userLogic.viewMembersTransactionHistory(userLogic.getLoggedIn().getUsername());
+            }
+
+        });
+
         Option addBookInformation = new Option("Add Book Information", () -> {
             if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
                 String isbn = Util.safeStringInput("ISBN");
@@ -184,7 +204,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging feature
-        testMenu = new Menu(printBooksCategory, editMember, returnBook, viewMembers, renewTransaction, addMember, removeMember, editBook, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
+        testMenu = new Menu(viewTransactionHistoryMember, printBooksCategory, editMember, returnBook, viewMembers, renewTransaction, addMember, removeMember, editBook, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
         setActiveMenu(testMenu);
     }
 
