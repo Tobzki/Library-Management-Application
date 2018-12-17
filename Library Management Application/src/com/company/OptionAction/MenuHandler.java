@@ -2,10 +2,13 @@ package com.company.OptionAction;
 
 import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
+import com.company.Library.Transaction;
+import com.company.Users.Account;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class MenuHandler {
@@ -91,13 +94,27 @@ public class MenuHandler {
             if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
                 String isbn = Util.safeStringInput("ISBN of book");
                 Book book = libraryLogic.getBook(isbn);
-                if (book != null && book.isAvailable()) {
+                if (book == null) {
+                    System.out.println("No book was found with that ISBN, please try again.");
+                } else if (!book.isAvailable()) {
+                    // search for when the book is back in stock, super slow algorithm but i'm working with
+                    // the current structure of the program
+                    Date dueDate = new Date();
+                    for (Account acc : userLogic.getUsers()) {
+                        if (acc instanceof Member) {
+                            for (Transaction trans : ((Member) acc).getTransactions()) {
+                                if (isbn.equals(trans.getBookId())) {
+                                    dueDate = trans.getDueDate();
+                                }
+                            }
+                        }
+                    }
+                    System.out.println("This book has been loaned out and will be back " + dueDate);
+                } else {
                     int confirm = Util.safeIntInput("Is '" + book.getTitle() + "' the correct book?\n1) Yes 2) No", 2);
                     if (confirm == 1 && userLogic.makeTransaction(book)) {
                         System.out.println("You have loaned '" + book.getTitle() + "'");
                     }
-                } else {
-                    System.out.println("Something went wrong, the book might not be available at this time.");
                 }
             } else {
                 System.out.println("You are not permitted to perform this action.");

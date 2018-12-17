@@ -5,6 +5,7 @@ import com.company.Library.Transaction;
 import com.company.Util;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UserLogic {
 
@@ -182,6 +183,10 @@ public class UserLogic {
         } else {
             System.out.println("\n\nThere are no members to print.\n\n");
         }
+    }
+
+    public ArrayList<Account> getUsers () {
+        return users;
     }
 
 }
