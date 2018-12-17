@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0cf7a60a-41eb-4c31-97f6-bd83f7036ec8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Histories/rani.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Histories/rani.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Users/UserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Users/UserLogic.java" afterDir="false" />
     </list>
@@ -12,44 +11,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-721170334">
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="7" />
-          <entry key="txt" value="1" />
-          <entry key="xml" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="7" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="XML" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="973" />
-          <entry key="txt" value="6" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="973" />
-          <entry key="PLAIN_TEXT" value="6" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="766">
-              <caret line="206" column="58" selection-start-line="206" selection-start-column="58" selection-end-line="206" selection-end-column="58" />
+            <state relative-caret-position="1545">
+              <caret line="103" column="52" lean-forward="true" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#9243#9244#0" expanded="true" />
                 <element signature="e#9282#9283#0" expanded="true" />
               </folding>
@@ -60,8 +30,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Users/UserLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="211" column="5" lean-forward="true" selection-start-line="211" selection-start-column="5" selection-end-line="211" selection-end-column="5" />
+            <state relative-caret-position="341">
+              <caret line="191" selection-start-line="191" selection-end-line="191" />
+              <folding>
+                <element signature="e#5188#5189#0" expanded="true" />
+                <element signature="e#5219#5220#0" expanded="true" />
+                <element signature="e#6871#6872#0" expanded="true" />
+                <element signature="e#6899#6900#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,15 +75,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5224">
-              <caret line="17" column="16" lean-forward="true" selection-end-line="415" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Util.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -125,7 +92,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/LibraryApp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -148,12 +115,6 @@
         <option value="$PROJECT_DIR$/src/com/company/Users/UserLogic.java" />
       </list>
     </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="269" />
-    <option name="y" value="23" />
-    <option name="width" value="1301" />
-    <option name="height" value="975" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -223,9 +184,6 @@
       </pane>
       <pane id="Scope" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545041554454" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -305,115 +263,38 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/Users/Member.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Library/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/Option.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Users/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Users/Librarian.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Library/LibraryLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="206" column="58" selection-start-line="206" selection-start-column="58" selection-end-line="206" selection-end-column="58" />
-          <folding>
-            <element signature="e#9243#9244#0" expanded="true" />
-            <element signature="e#9282#9283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Library/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/FileIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="91" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Users/UserLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="211" column="5" lean-forward="true" selection-start-line="211" selection-start-column="5" selection-end-line="211" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Histories/rani.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        <state relative-caret-position="-5179">
+          <caret line="20" column="16" lean-forward="true" selection-end-line="538" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Users/UserLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5224">
-          <caret line="17" column="16" lean-forward="true" selection-end-line="415" selection-end-column="10" />
+        <state relative-caret-position="341">
+          <caret line="191" selection-start-line="191" selection-end-line="191" />
+          <folding>
+            <element signature="e#5188#5189#0" expanded="true" />
+            <element signature="e#5219#5220#0" expanded="true" />
+            <element signature="e#6871#6872#0" expanded="true" />
+            <element signature="e#6899#6900#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/LibraryApp.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="1545">
+          <caret line="103" column="52" lean-forward="true" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9243#9244#0" expanded="true" />
+            <element signature="e#9282#9283#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
