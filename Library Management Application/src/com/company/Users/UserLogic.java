@@ -23,6 +23,7 @@ public class UserLogic {
         users = new ArrayList<>();
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
         users.add(new Librarian("1234", "Rasmus Nilsson", "Storgatan", "079349", "rani_lib", "dogs"));
+        users.add(new Librarian("1253", "Tobias Andersson", "Ystadsvägen", "43434", "tobski_lib", "dogs"));
     }
 
     public boolean editUser(String ssn) {
@@ -126,7 +127,7 @@ public class UserLogic {
         return false; // either user is not logged in or book is not available
     }
 
-    public boolean returnBook (int transactionId) {
+    public boolean returnBook(int transactionId) {
         if (authorize() == USER_STATE.MEMBER && ((Member) loggedIn).returnTransaction(transactionId)) {
             return true;
         } else {
@@ -134,7 +135,7 @@ public class UserLogic {
         }
     }
 
-    public String getTransactionBookId (int transactionId) {
+    public String getTransactionBookId(int transactionId) {
         if (authorize() == USER_STATE.MEMBER) {
             Transaction tmp = ((Member) loggedIn).searchTransactionById(transactionId);
             if (tmp != null) {
@@ -181,11 +182,10 @@ public class UserLogic {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i) instanceof Member) {
                     if (((Member) users.get(i)).checkLateTransactions()) {
-                        ArrayList<Transaction> feeAmount = ((Member)users.get(i)).getTransactions();
-                        for(int j = 0; j < feeAmount.size(); j++){
-                            if (today.after(feeAmount.get(j).getDueDate()))
-                            {
-                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is " + feeAmount.get(j).getPenaltyfee() + "SEK" );
+                        ArrayList<Transaction> feeAmount = ((Member) users.get(i)).getTransactions();
+                        for (int j = 0; j < feeAmount.size(); j++) {
+                            if (today.after(feeAmount.get(j).getDueDate())) {
+                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is " + feeAmount.get(j).getPenaltyfee() + "SEK");
                             }
                         }
                         System.out.println(i + 1 + ". " + users.get(i));
@@ -197,7 +197,7 @@ public class UserLogic {
         }
     }
 
-    public void viewMembersTransactionHistory (String name) {
+    public void viewMembersTransactionHistory(String name) {
 
         String fileName = FileSystems.getDefault().getPath("Histories/" + name + ".txt").toString();
         String line;
@@ -206,7 +206,7 @@ public class UserLogic {
             FileReader fileReader = new FileReader(fileName);
 
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while ((line = bufferedReader.readLine())!= null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
             bufferedReader.close();
@@ -216,9 +216,9 @@ public class UserLogic {
         } catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
         }
-        }
+    }
 
-    public ArrayList<Account> getUsers () {
+    public ArrayList<Account> getUsers() {
         return users;
     }
 

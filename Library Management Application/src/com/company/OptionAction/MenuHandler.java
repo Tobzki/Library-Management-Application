@@ -4,10 +4,12 @@ import com.company.Library.Book;
 import com.company.Library.LibraryLogic;
 import com.company.Library.Transaction;
 import com.company.Users.Account;
+import com.company.Users.Librarian;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -44,6 +46,7 @@ public class MenuHandler {
     private void init() {
         // Options about members
         Option viewMembers = new Option("View members", userLogic::viewListMembers);
+
         Option addMember = new Option("Add Member", () -> {
             if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
                 String ssn = Util.safeStringInput("SSN");
@@ -62,6 +65,7 @@ public class MenuHandler {
                 System.out.println("You are not permitted to perform this action.");
             }
         });
+
         Option editMember = new Option("Edit Member", () -> {
             String ssn = Util.safeStringInput("SSN of user to edit");
             if (userLogic.editUser(ssn)) {
@@ -70,6 +74,7 @@ public class MenuHandler {
                 System.out.println("No user was edited (You can only edit members, and make sure to enter the correct SSN).");
             }
         });
+
         Option removeMember = new Option("Remove Member", () -> {
             String ssn = Util.safeStringInput("SSN of member to remove");
             if (userLogic.removeUser(ssn)) {
@@ -78,6 +83,7 @@ public class MenuHandler {
                 System.out.println("No member was removed.");
             }
         });
+
         Option login = new Option("Log in", () -> {
             String username = Util.safeStringInput("Username");
             String password = Util.safeStringInput("Password");
@@ -120,6 +126,7 @@ public class MenuHandler {
                 System.out.println("You are not permitted to perform this action.");
             }
         });
+
         Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
 
         Option renewTransaction = new Option("Renew Transaction", () -> {
@@ -132,6 +139,7 @@ public class MenuHandler {
                 }
             }
         });
+
         Option returnBook = new Option("Return book", () -> {
             int transactionId = Util.safeIntInput("Transaction id:");
             Book book = libraryLogic.getBook(userLogic.getTransactionBookId(transactionId));
@@ -144,6 +152,37 @@ public class MenuHandler {
         });
 
         Option viewMembersAfterDue = new Option("View members after due", userLogic::printMembersAfterDue);
+
+        // Request options
+        Option requestBook = new Option("Request a new book", () -> {
+            if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
+                String title = Util.safeStringInput("Title of book");
+                if (libraryLogic.bookExists(title)) {
+                    System.out.println("This book is already in the library!\nTry searching for it instead.");
+                } else if (Librarian.requestExists(title)) {
+                    System.out.println("We have already recieved a request for this book, if possible it will be added soon.");
+                } else {
+                    Librarian.addRequest(title);
+                }
+            }
+        });
+
+        Option viewRequests = new Option ("View book requests", () -> {
+            if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
+                ((Librarian) userLogic.getLoggedIn()).printRequests();
+            }
+        });
+
+        Option removeRequest = new Option ("Remove request", () -> {
+            if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
+                String title = Util.safeStringInput("Request/title");
+                if (Librarian.requestExists(title)) {
+                    ((Librarian) userLogic.getLoggedIn()).removeRequest(title);
+                } else {
+                    System.out.println("Could not find the request, go back and control spelling.");
+                }
+            }
+        });
 
         // Options about books
         Option editBook = new Option("Edit book", () -> {
@@ -221,7 +260,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging feature
-        testMenu = new Menu(viewTransactionHistoryMember, printBooksCategory, editMember, returnBook, viewMembers, renewTransaction, addMember, removeMember, editBook, addBookInformation, searchBook, removeBook, issueBook, viewTransactions, login, viewMembersAfterDue);
+        testMenu = new Menu(login, requestBook,viewRequests, removeRequest);
         setActiveMenu(testMenu);
     }
 
