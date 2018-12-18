@@ -121,6 +121,7 @@ public class MenuHandler {
             }
         });
         Option viewTransactions = new Option("View Transactions", userLogic::viewTransactions);
+
         Option renewTransaction = new Option("Renew Transaction", () -> {
             if (userLogic.authorize() == UserLogic.USER_STATE.MEMBER) {
                 int index = Util.safeIntInput("Transaction id");

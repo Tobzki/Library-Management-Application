@@ -175,11 +175,18 @@ public class UserLogic {
     }
 
     public void printMembersAfterDue() {
+        Date today = new Date();
         if (authorize() == USER_STATE.LIBRARIAN) {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i) instanceof Member) {
                     if (((Member) users.get(i)).checkLateTransactions()) {
-
+                        ArrayList<Transaction> feeAmount = ((Member)users.get(i)).getTransactions();
+                        for(int j = 0; j < feeAmount.size(); j++){
+                            if (today.after(feeAmount.get(j).getDueDate()))
+                            {
+                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is " + feeAmount.get(j).getPenaltyfee() + "SEK" );
+                            }
+                        }
                         System.out.println(i + 1 + ". " + users.get(i));
                     }
                 }

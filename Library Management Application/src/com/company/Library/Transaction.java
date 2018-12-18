@@ -42,6 +42,13 @@ public class Transaction {
         return bookId;
     }
 
+    public String getPenaltyfee () {
+        Date date = new Date();
+        long diff = dueDate.getTime() - date.getTime();
+        return ""+(diff / 1000 / 60 / 60 / 24)*10;
+
+    }
+
     public void setDueDate (Date dueDate) {
         this.dueDate = dueDate;
     }
