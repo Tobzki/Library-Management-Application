@@ -226,6 +226,14 @@ public class UserLogic {
         }
     }
 
+    public void logOut () {
+
+        if (authorize() != USER_STATE.NOT_LOGGED_IN) {
+
+            loggedIn = null;
+        }
+    }
+
     public ArrayList<Account> getUsers() {
         return users;
     }

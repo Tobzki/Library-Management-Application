@@ -270,13 +270,18 @@ public class MenuHandler {
         Option goToHandleRequests = new Option("Handle requests", () -> setActiveMenu(handleRequests));
         Option goToLoans = new Option("View loans", () -> setActiveMenu(loans));
         Option goToBooks = new Option("View books", () -> setActiveMenu(books));
+        Option logOut = new Option ("Log out", () -> {
+
+            userLogic.logOut();
+            setActiveMenu(loginMenu);
+        });
 
         loginMenu = new Menu(login, exit);
-        librarian = new Menu(goToHandleBooks, goToHandleMembers, goToHandleRequests, exit);
+        librarian = new Menu(goToHandleBooks, goToHandleMembers, goToHandleRequests, logOut, exit);
         handleBooks = new Menu(addBookInformation, editBook, removeBook, searchBook, printBooksCategory, back);
         handleMembers = new Menu(addMember, editMember, removeMember, viewMembers, viewMembersAfterDue, viewTransactionHistoryMember, back);
         handleRequests = new Menu(viewRequests, removeRequest, back);
-        member = new Menu(goToLoans, goToBooks, requestBook, exit);
+        member = new Menu(goToLoans, goToBooks, requestBook, logOut, exit);
         books = new Menu(searchBook, printBooksCategory, back);
         loans = new Menu(issueBook, searchBook, returnBook, viewTransactions, viewTransactionHistoryMember, renewTransaction, back);
         setActiveMenu(loginMenu);
