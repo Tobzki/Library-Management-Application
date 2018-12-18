@@ -23,6 +23,7 @@ public class UserLogic {
         users = new ArrayList<>();
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
         users.add(new Librarian("1234", "Rasmus Nilsson", "Storgatan", "079349", "rani_lib", "dogs"));
+        users.add(new Librarian("1253", "Tobias Andersson", "Ystadsvägen", "43434", "tobski_lib", "dogs"));
     }
 
     public boolean editUser(String ssn) {
@@ -181,11 +182,10 @@ public class UserLogic {
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i) instanceof Member) {
                     if (((Member) users.get(i)).checkLateTransactions()) {
-                        ArrayList<Transaction> feeAmount = ((Member)users.get(i)).getTransactions();
-                        for(int j = 0; j < feeAmount.size(); j++){
-                            if (today.after(feeAmount.get(j).getDueDate()))
-                            {
-                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is " + feeAmount.get(j).getPenaltyfee() + "SEK" );
+                        ArrayList<Transaction> feeAmount = ((Member) users.get(i)).getTransactions();
+                        for (int j = 0; j < feeAmount.size(); j++) {
+                            if (today.after(feeAmount.get(j).getDueDate())) {
+                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is " + feeAmount.get(j).getPenaltyfee() + "SEK");
                             }
                         }
                         System.out.println(i + 1 + ". " + users.get(i));

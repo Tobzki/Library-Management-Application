@@ -145,6 +145,17 @@ public class LibraryLogic {
         return null; // no book was found
     }
 
+    public boolean bookExists (String title) {
+        // Search through the inventory for matching title
+        for (Book book : inventory) {
+            if (book.getTitle().toLowerCase().equals(title.toLowerCase())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean editBook(String isbn) {
         if (getBook(isbn) != null) {
             Book bookToEdit = (Book) getBook(isbn);
