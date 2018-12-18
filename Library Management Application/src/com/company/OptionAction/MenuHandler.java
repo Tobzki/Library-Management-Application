@@ -8,8 +8,6 @@ import com.company.Users.Librarian;
 import com.company.Users.Member;
 import com.company.Users.UserLogic;
 import com.company.Util;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -260,7 +258,7 @@ public class MenuHandler {
         });
 
         // DEBUG: Test menu for debugging feature
-        testMenu = new Menu(login, requestBook,viewRequests, removeRequest);
+        testMenu = new Menu(login, requestBook, viewRequests, removeRequest, issueBook, viewTransactionHistoryMember, viewMembersAfterDue);
         setActiveMenu(testMenu);
     }
 
