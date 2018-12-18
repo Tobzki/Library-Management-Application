@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a7f39ec-4cc4-49c6-ac47-25d7dcd0948c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/Library/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Library/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Users/UserLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Users/UserLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,19 +13,19 @@
     <session id="-721170334">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="259" />
+          <entry key="java" value="1217" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="259" />
+          <entry key="JAVA" value="1217" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Library/LibraryLogic.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1740">
@@ -37,18 +35,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Library/Book.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Users/UserLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
+            <state relative-caret-position="1936">
               <caret line="209" column="100" lean-forward="true" selection-start-line="209" selection-start-column="100" selection-end-line="209" selection-end-column="100" />
               <folding>
                 <element signature="e#5294#5295#0" expanded="true" />
@@ -58,20 +47,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Library/Transaction.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+            <state relative-caret-position="4200">
+              <caret line="280" column="125" selection-start-line="280" selection-start-column="125" selection-end-line="280" selection-end-column="125" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#12331#12332#0" expanded="true" />
+                <element signature="e#12370#12371#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/Option.java">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Users/Member.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4">
+              <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Library/Book.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Library/Transaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -101,15 +113,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Users/Member.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
-              <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/LibraryApp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -119,13 +122,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/Option.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2780">
-              <caret line="260" column="137" selection-start-line="260" selection-start-column="137" selection-end-line="260" selection-end-column="137" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -138,11 +138,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java" />
         <option value="$PROJECT_DIR$/src/com/company/Users/UserLogic.java" />
         <option value="$PROJECT_DIR$/src/com/company/Library/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java" />
       </list>
     </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="975" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -220,7 +225,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545124815548" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545126709973" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -268,7 +273,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="975" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49943376" visible="true" weight="0.20879121" />
       <window_info id="Structure" order="1" sideWeight="0.50056624" side_tool="true" weight="0.29626688" />
@@ -287,7 +293,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50061053" side_tool="true" weight="0.33182332" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3295583" />
-      <window_info anchor="bottom" id="Run" order="10" sideWeight="0.4993895" weight="0.33182332" />
+      <window_info anchor="bottom" id="Run" order="10" sideWeight="0.4993895" weight="0.33163264" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -299,9 +305,16 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/company/LibraryApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Users/UserLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
+        <state relative-caret-position="1936">
           <caret line="209" column="100" lean-forward="true" selection-start-line="209" selection-start-column="100" selection-end-line="209" selection-end-column="100" />
           <folding>
             <element signature="e#5294#5295#0" expanded="true" />
@@ -310,17 +323,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Library/Book.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Library/LibraryLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Library/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+        <state relative-caret-position="1740">
+          <caret line="121" column="35" lean-forward="true" selection-start-line="121" selection-start-column="35" selection-end-line="121" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -328,6 +334,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Library/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Library/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -351,34 +371,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2780">
-          <caret line="260" column="137" selection-start-line="260" selection-start-column="137" selection-end-line="260" selection-end-column="137" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/LibraryApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Users/Member.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="71" column="38" selection-start-line="71" selection-start-column="38" selection-end-line="71" selection-end-column="38" />
+        <state relative-caret-position="-4">
+          <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Library/LibraryLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/OptionAction/MenuHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="121" column="35" lean-forward="true" selection-start-line="121" selection-start-column="35" selection-end-line="121" selection-end-column="35" />
+        <state relative-caret-position="4200">
+          <caret line="280" column="125" selection-start-line="280" selection-start-column="125" selection-end-line="280" selection-end-column="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12331#12332#0" expanded="true" />
+            <element signature="e#12370#12371#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

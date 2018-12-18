@@ -21,7 +21,9 @@ public class MenuHandler {
     private Menu lastMenu; // records what menu was previously visited
 
     // Custom menus
-    private Menu testMenu; // keep this for debugging
+    private Menu loginMenu;
+    private Menu librarian, handleMembers, handleBooks, handleRequests;
+    private Menu member, books, loans;
 
     private Option back;
     private Option exit;
@@ -88,6 +90,11 @@ public class MenuHandler {
 
             if (userLogic.authenticate(username, password)) {
                 System.out.println("Successfully logged in.");
+                if (userLogic.authorize() == UserLogic.USER_STATE.LIBRARIAN) {
+                    setActiveMenu(librarian);
+                } else {
+                    setActiveMenu(member);
+                }
             } else {
                 System.out.println("Username and/or password was incorrect.");
             }
@@ -257,9 +264,22 @@ public class MenuHandler {
 
         });
 
-        // DEBUG: Test menu for debugging feature
-        testMenu = new Menu(login, requestBook, viewRequests, removeRequest, issueBook, viewTransactionHistoryMember, viewMembersAfterDue);
-        setActiveMenu(testMenu);
+        // Menu navigation
+        Option goToHandleBooks = new Option("Handle books", () -> setActiveMenu(handleBooks));
+        Option goToHandleMembers = new Option("Handle members", () -> setActiveMenu(handleMembers));
+        Option goToHandleRequests = new Option("Handle requests", () -> setActiveMenu(handleRequests));
+        Option goToLoans = new Option("View loans", () -> setActiveMenu(loans));
+        Option goToBooks = new Option("View books", () -> setActiveMenu(books));
+
+        loginMenu = new Menu(login, exit);
+        librarian = new Menu(goToHandleBooks, goToHandleMembers, goToHandleRequests, exit);
+        handleBooks = new Menu(addBookInformation, editBook, removeBook, searchBook, printBooksCategory, back);
+        handleMembers = new Menu(addMember, editMember, removeMember, viewMembers, viewMembersAfterDue, viewTransactionHistoryMember, back);
+        handleRequests = new Menu(viewRequests, removeRequest, back);
+        member = new Menu(goToLoans, goToBooks, requestBook, exit);
+        books = new Menu(searchBook, printBooksCategory, back);
+        loans = new Menu(issueBook, searchBook, returnBook, viewTransactions, viewTransactionHistoryMember, renewTransaction, back);
+        setActiveMenu(loginMenu);
     }
 
     private void backAction() {
