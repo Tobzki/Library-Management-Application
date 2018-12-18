@@ -4,6 +4,11 @@ import com.company.Library.Book;
 import com.company.Library.Transaction;
 import com.company.Util;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -184,6 +189,27 @@ public class UserLogic {
             System.out.println("\n\nThere are no members to print.\n\n");
         }
     }
+
+    public void viewMembersTransactionHistory (String name) {
+
+        String fileName = FileSystems.getDefault().getPath("Histories/" + name + ".txt").toString();
+        String line;
+
+        try {
+            FileReader fileReader = new FileReader(fileName);
+
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine())!= null) {
+                System.out.println(line);
+            }
+            bufferedReader.close();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Unable to open file '" + fileName + "'");
+        } catch (IOException ex) {
+            System.out.println("Error reading file '" + fileName + "'");
+        }
+        }
 
     public ArrayList<Account> getUsers () {
         return users;
