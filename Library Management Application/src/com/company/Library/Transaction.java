@@ -45,6 +45,8 @@ public class Transaction {
     public long getPenaltyfee () {
         Date date = new Date();
         long diff = dueDate.getTime() - date.getTime();
+        if(lateFee > 500){
+            lateFee = 500; }
         return Math.abs((diff / 1000 / 60 / 60 / 24)*10);
 
     }

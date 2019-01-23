@@ -125,7 +125,7 @@ public class UserLogic {
     }
 
     public boolean makeTransaction(Book book) {
-        if (authorize() == USER_STATE.MEMBER && book.isAvailable()) {
+        if (authorize() == USER_STATE.MEMBER && book.isAvailable() && ((Member) getLoggedIn()).maxBookMessage()) {
             Transaction transaction = new Transaction(book.getIsbn());
             ((Member) loggedIn).addTransaction(transaction);
             book.setAvailable(false);
@@ -193,17 +193,29 @@ public class UserLogic {
                         ArrayList<Transaction> feeAmount = ((Member) users.get(i)).getTransactions();
                         for (int j = 0; j < feeAmount.size(); j++) {
                             if (today.after(feeAmount.get(j).getDueDate())) {
-                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is " + feeAmount.get(j).getPenaltyfee() + "SEK");
+
+                                Long LfeeAmount = feeAmount.get(j).getPenaltyfee();
+
+                                String maxFeeText = "";
+                                if (LfeeAmount == 500) {
+                                    maxFeeText = "Max penalty fee of 500SEK is reached.";
+                                }
+
+                                System.out.println("The book " + feeAmount.get(j).getBookId() + "is over due, the current penalty fee is "
+                                        + LfeeAmount + "SEK" + maxFeeText
+                                );
+                                System.out.println(i + 1 + ". " + users.get(i));
                             }
                         }
-                        System.out.println(i + 1 + ". " + users.get(i));
                     }
+                } else {
+                    System.out.println("\n\nThere are no members to print.\n\n");
                 }
             }
-        } else {
-            System.out.println("\n\nThere are no members to print.\n\n");
         }
     }
+
+
 
     public void viewMembersTransactionHistory(String name) {
 

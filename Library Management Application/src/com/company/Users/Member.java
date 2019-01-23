@@ -27,6 +27,7 @@ public class Member extends Account {
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;
+
     }
 
     public boolean returnTransaction(int id) {
@@ -88,5 +89,18 @@ public class Member extends Account {
             }
         }
         return false;
+    }
+
+    public boolean maxBookMessage() {
+        String returnMessage = "";
+        if (transactions.size() == 4) {
+            returnMessage = "Max 4 books per Member!";
+            return true;
+        } else {
+            return false;
+
+        }
+
+
     }
 }
