@@ -93,11 +93,11 @@ public class Member extends Account {
 
     public boolean maxBookMessage() {
         String returnMessage = "";
-        if (transactions.size() == 4) {
-            returnMessage = "Max 4 books per Member!";
-            return true;
-        } else {
+        if (getTransactions().size() == 4) {
+            System.out.println("Max 4 books per Member!");
             return false;
+        } else {
+            return true;
 
         }
 

@@ -25,7 +25,7 @@ public class UserLogic {
         users.add(new Member("971217", "Rasmus Nilsson", "Storgatan", "079349", "rani", "dogs"));
         users.add(new Librarian("1234", "Rasmus Nilsson", "Storgatan", "079349", "rani_lib", "dogs"));
         users.add(new Librarian("1253", "Tobias Andersson", "Ystadsvägen", "43434", "tobski_lib", "dogs"));
-        ((Member)users.get(0)).addTransaction(new Transaction("978-1"));
+        ((Member)users.get(0)).addTransaction(new Transaction("9780380015399"));
         Date date = new Date();
         Calendar temp = Calendar.getInstance();
         temp.setTime(date);
